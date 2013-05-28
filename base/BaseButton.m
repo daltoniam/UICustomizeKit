@@ -8,7 +8,7 @@
 //////////////////////////////////////////////////////////////////
 
 #import "BaseButton.h"
-#import "BaseColor.h"
+#import "UIColor+BaseColor.h"
 
 @implementation BaseButton
 
@@ -125,7 +125,7 @@
     [super drawRect:rect];
 }
 //////////////////////////////////////////////////////////////////
--(void)dealloc
+-(void)cleanup
 {
     if(self.colorRange)
     {
@@ -142,6 +142,11 @@
         free(self.disabledRange);
         self.disabledRange = NULL;
     }
+}
+//////////////////////////////////////////////////////////////////
+-(void)dealloc
+{
+    [self cleanup];
 }
 //////////////////////////////////////////////////////////////////
 

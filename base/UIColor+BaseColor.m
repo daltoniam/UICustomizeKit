@@ -7,7 +7,7 @@
 //
 //////////////////////////////////////////////////////////////////
 
-#import "BaseColor.h"
+#import "UIColor+BaseColor.h"
 
 @implementation BaseColor
 

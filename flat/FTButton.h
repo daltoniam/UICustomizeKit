@@ -11,9 +11,11 @@
 
 @interface FTButton : BaseButton
 
-//create a new button with a color
--(void)setColor:(UIColor*)color;
+@property(nonatomic,assign)BOOL isRaised;
 
-+(FTButton*)buttonWithColor:(UIColor*)color;
+//create a new button with a color
+-(void)setColor:(UIColor*)color raised:(BOOL)raise;
+
++(FTButton*)buttonWithColor:(UIColor*)color raised:(BOOL)raise;
 
 @end

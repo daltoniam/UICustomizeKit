@@ -1,25 +1,27 @@
 //////////////////////////////////////////////////////////////////
 //
-//  BTButton.m
+//  BTProgressView.m
 //
-//  Created by Dalton Cherry on 5/27/13.
+//  Created by Dalton Cherry on 5/28/13.
 //  Copyright (c) 2013 basement Krew. All rights reserved.
 //
 //////////////////////////////////////////////////////////////////
 
-#import "BTButton.h"
+#import "BTProgressView.h"
 #import "UIColor+BaseColor.h"
 
-@implementation BTButton
+@implementation BTProgressView
 
 //////////////////////////////////////////////////////////////////
 -(void)commonInit
 {
-    self.backgroundColor = [UIColor clearColor];
-    self.rounding = 4;
     self.borderWidth = 1;
+    self.borderColor = [UIColor colorWithWhite:0.90 alpha:1];
+    self.rounding = 4;
     self.corners = UIRectCornerAllCorners;
-    self.titleLabel.shadowOffset = CGSizeMake(0.0, -0.5);
+    self.backgroundColor = [UIColor clearColor];
+    animateProgress = -1;
+    [self setColor:[UIColor primaryColor]];
 }
 //////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame
@@ -44,30 +46,29 @@
 //////////////////////////////////////////////////////////////////
 -(void)setColor:(UIColor*)color
 {
-    UIColor* mainColor = color;
-    UIColor* topColor = [color adjustColor:0.12];
-    UIColor* mainHigh = [color adjustColor:-0.05];
-    
-    UIColor* lineColor = [topColor adjustColor:0.1];
-    UIColor* highLineColor = [topColor adjustColor:-0.1];
-
-    self.colors = @[lineColor,topColor,mainColor];
-    self.selectedColors = @[highLineColor,mainHigh,mainHigh];
-    self.disabledColors = @[mainColor,mainColor,mainColor];
+    [self cleanup];
+    UIColor* fillColor = [UIColor colorWithWhite:0.97 alpha:1];
+    self.trackColors = @[[UIColor colorWithWhite:0.92 alpha:1],fillColor,fillColor];
     
     CGFloat *newGradientLocations = (CGFloat*)malloc(sizeof(CGFloat)*3);
     newGradientLocations[0] = 0;
-    newGradientLocations[1] = 0.1;
+    newGradientLocations[1] = 0.12;
     newGradientLocations[2] = 1.0;
-    self.colorRange = self.disabledRange = self.selectedRange = newGradientLocations;
+    self.trackRange = newGradientLocations;
+    
+    self.colors = @[color,[color adjustColor:-0.12]];
+    
+    newGradientLocations = (CGFloat*)malloc(sizeof(CGFloat)*2);
+    newGradientLocations[0] = 0;
+    newGradientLocations[1] = 1.0;
+    self.colorRange = newGradientLocations;
 }
 //////////////////////////////////////////////////////////////////
-+(BTButton*)buttonWithColor:(UIColor*)color
++(BTProgressView*)progressViewWithColor:(UIColor*)color
 {
-    BTButton* button = [[BTButton alloc] init];
-    [button setColor:color];
-    [button setTitleColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateDisabled];
-    return button;
+    BTProgressView* progressBar = [[BTProgressView alloc] init];
+    [progressBar setColor:color];
+    return progressBar;
 }
 //////////////////////////////////////////////////////////////////
 

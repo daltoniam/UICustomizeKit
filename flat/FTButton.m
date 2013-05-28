@@ -8,7 +8,7 @@
 //////////////////////////////////////////////////////////////////
 
 #import "FTButton.h"
-#import "BaseColor.h"
+#import "UIColor+BaseColor.h"
 
 @implementation FTButton
 
@@ -42,10 +42,13 @@
     return self;
 }
 //////////////////////////////////////////////////////////////////
--(void)setColor:(UIColor*)color
+-(void)setColor:(UIColor*)color raised:(BOOL)raise
 {
+    self.isRaised = raise;
     UIColor* mainColor = color;
-    UIColor* lineColor = [mainColor adjustColor:-0.4];
+    UIColor* lineColor = mainColor;
+    if(self.isRaised)
+        lineColor = [mainColor adjustColor:-0.4];
     
     self.colors = @[mainColor,mainColor,lineColor];
     self.selectedColors = @[mainColor,mainColor,mainColor];
@@ -66,19 +69,22 @@
 //////////////////////////////////////////////////////////////////
 -(void)flatAdjust:(BOOL)selected
 {
-    int offset = 1;
-    CGRect frame = self.frame;
-    if(selected)
-        frame.origin.y += offset;
-    else
-        frame.origin.y -= offset;
-    self.frame = frame;
+    if(self.isRaised)
+    {
+        int offset = 1;
+        CGRect frame = self.frame;
+        if(selected)
+            frame.origin.y += offset;
+        else
+            frame.origin.y -= offset;
+        self.frame = frame;
+    }
 }
 //////////////////////////////////////////////////////////////////
-+(FTButton*)buttonWithColor:(UIColor*)color
++(FTButton*)buttonWithColor:(UIColor*)color raised:(BOOL)raise
 {
     FTButton* button = [[FTButton alloc] init];
-    [button setColor:color];
+    [button setColor:color raised:raise];
     [button setTitleColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateDisabled];
     return button;
 }

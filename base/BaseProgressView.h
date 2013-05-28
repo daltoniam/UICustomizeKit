@@ -1,17 +1,19 @@
 //////////////////////////////////////////////////////////////////
 //
-//  BaseButton.h
+//  BaseProgressView.h
 //  iOSTester
 //
-//  Created by Dalton Cherry on 5/27/13.
+//  Created by Dalton Cherry on 5/28/13.
 //  Copyright (c) 2013 basement Krew. All rights reserved.
 //
 //////////////////////////////////////////////////////////////////
 
 #import <UIKit/UIKit.h>
 
-@interface BaseButton : UIButton
-
+@interface BaseProgressView : UIView
+{
+    float animateProgress;
+}
 //frees the CGFloat arrays
 -(void)cleanup;
 
@@ -22,16 +24,10 @@
 @property(nonatomic,assign)CGFloat* colorRange;
 
 //your selected/hightlight color
-@property(nonatomic,strong)NSArray* selectedColors;
+@property(nonatomic,strong)NSArray* trackColors;
 
 //the float selected gradient
-@property(nonatomic,assign)CGFloat* selectedRange;
-
-//your disabled color
-@property(nonatomic,strong)NSArray* disabledColors;
-
-//the float disabled gradient
-@property(nonatomic,assign)CGFloat* disabledRange;
+@property(nonatomic,assign)CGFloat* trackRange;
 
 //the width of the border
 @property(nonatomic,assign)CGFloat borderWidth;
@@ -44,5 +40,11 @@
 
 //the corners to round
 @property(nonatomic,assign)UIRectCorner corners;
+
+//the progress of the bar
+@property(nonatomic,assign)CGFloat progress;
+
+//set the progress bar with animation
+-(void)setProgress:(CGFloat)pro animated:(BOOL)animated;
 
 @end

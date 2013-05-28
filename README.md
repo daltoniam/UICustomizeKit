@@ -49,16 +49,16 @@ Open your project in Xcode from the .xcworkspace file (not the usual project fil
 * http://twitter.com/daltoniam
 
 ### TODOs: ###
-port DCProgressView
-add AlertView
-add statusView (statusBar)
-port FontAwesome (and add any other great/open source fonts!)
-add TextField/TextView
-add barButtonItem
-add UISwitch
-add tabBar
-add NavigationBar
-add loading/progress dialog (more like UIActivityView)
-add a searchBar view
-maybe an actionsheet?
-possible port/add DCDataViews? (not sure if that fits in this scope)
++	add AlertView
++	add statusView (statusBar)
++	port FontAwesome (and add any other great/open source fonts!)
++	add TextField/TextView
++	add barButtonItem
++	add UISwitch
++	add tabBar
++	add NavigationBar
++	add slider
++	add loading/progress dialog (more like UIActivityView)
++	add a searchBar view
++	maybe an actionsheet?
++	possible port/add DCDataViews? (not sure if that fits in this scope)
