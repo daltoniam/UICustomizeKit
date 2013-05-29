@@ -51,8 +51,17 @@
         lineColor = [mainColor adjustColor:-0.4];
     
     self.colors = @[mainColor,mainColor,lineColor];
-    self.selectedColors = @[mainColor,mainColor,mainColor];
-    self.disabledColors = @[mainColor,mainColor,mainColor];
+    if(raise)
+    {
+        self.selectedColors = @[mainColor,mainColor,mainColor];
+        self.disabledColors = @[mainColor,mainColor,mainColor];
+    }
+    else
+    {
+        UIColor* selectColor = [mainColor adjustColor:-0.1];
+        self.selectedColors = @[selectColor,selectColor,selectColor];
+        self.disabledColors = @[selectColor,selectColor,selectColor];
+    }
     
     CGFloat *newGradientLocations = (CGFloat*)malloc(sizeof(CGFloat)*3);
     newGradientLocations[0] = 0;

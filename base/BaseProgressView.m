@@ -131,6 +131,8 @@
 {
     if(self.colorRange)
     {
+        if(self.trackRange == self.colorRange)
+            self.trackRange = NULL;
         free(self.colorRange);
         self.colorRange = NULL;
     }

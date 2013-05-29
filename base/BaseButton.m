@@ -129,11 +129,17 @@
 {
     if(self.colorRange)
     {
+        if(self.selectedRange == self.colorRange)
+            self.selectedRange = NULL;
+        if(self.disabledRange == self.colorRange)
+            self.disabledRange = NULL;
         free(self.colorRange);
         self.colorRange = NULL;
     }
     if(self.selectedRange)
     {
+        if(self.disabledRange == self.colorRange)
+            self.disabledRange = NULL;
         free(self.selectedRange);
         self.selectedRange = NULL;
     }

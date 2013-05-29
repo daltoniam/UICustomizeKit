@@ -19,7 +19,7 @@
     CGFloat ranges[] = {0,1};
     [self setBackgroundImage:[UIImage imageWithColors:[NSArray arrayWithObjects:color,[color adjustColor:-0.12], nil]
                                                                        ranges:ranges size:CGSizeMake(10, 44) cornerRadius:0]
-                                       forBarMetrics:UIBarMetricsDefault & UIBarMetricsLandscapePhone];
+                                       forBarMetrics:UIBarMetricsDefault];
 }
 //////////////////////////////////////////////////////////////////
 

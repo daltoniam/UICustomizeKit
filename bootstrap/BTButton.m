@@ -19,7 +19,7 @@
     self.rounding = 4;
     self.borderWidth = 1;
     self.corners = UIRectCornerAllCorners;
-    self.titleLabel.shadowOffset = CGSizeMake(0.0, -0.5);
+    //self.titleLabel.shadowOffset = CGSizeMake(0.0, -0.5);
 }
 //////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame
@@ -44,6 +44,7 @@
 //////////////////////////////////////////////////////////////////
 -(void)setColor:(UIColor*)color
 {
+    [self cleanup];
     UIColor* mainColor = color;
     UIColor* topColor = [color adjustColor:0.12];
     UIColor* mainHigh = [color adjustColor:-0.05];

@@ -24,4 +24,7 @@
 +(UIImage*)circleImageWithColor:(UIColor*)color size:(CGSize)size;
 +(UIImage*)circleImageWithColors:(NSArray*)colors ranges:(CGFloat*)ranges size:(CGSize)size;
 
+//change a images color to a new color
+-(UIImage*)imageWithOverlayColor:(UIColor*)color;
+
 @end

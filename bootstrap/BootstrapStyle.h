@@ -10,7 +10,9 @@
 
 #import "UIColor+BaseColor.h"
 #import "UIImage+BaseImage.h"
+#import "UITabBar+BaseStyle.h"
 #import "BTButton.h"
 #import "BTProgressView.h"
 #import "UINavigationBar+BTStyle.h"
 #import "UITabBar+BTStyle.h"
+#import "UIBarButtonItem+BTStyle.h"

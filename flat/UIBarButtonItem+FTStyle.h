@@ -1,16 +1,17 @@
 //////////////////////////////////////////////////////////////////
 //
-//  UITabBar+FTStyle.h
+//  UIBarButtonItem+FTStyle.h
 //
-//  Created by Dalton Cherry on 5/28/13.
+//  Created by Dalton Cherry on 5/29/13.
 //  Copyright (c) 2013 basement Krew. All rights reserved.
 //
 //////////////////////////////////////////////////////////////////
 
 #import <UIKit/UIKit.h>
 
-@interface UITabBar (FTStyle)
+@interface UIBarButtonItem (FTStyle)
 
--(void)setFlatBarColor:(UIColor*)color selected:(UIColor*)selectedColor UI_APPEARANCE_SELECTOR;
++(void)setFlatButtonColors:(UIColor*)color UI_APPEARANCE_SELECTOR;
+-(void)setFlatColor:(UIColor*)color UI_APPEARANCE_SELECTOR;
 
 @end
