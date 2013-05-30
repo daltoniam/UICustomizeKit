@@ -11,6 +11,8 @@
 
 @interface UITabBar (FTStyle)
 
--(void)setFlatBarColor:(UIColor*)color selected:(UIColor*)selectedColor UI_APPEARANCE_SELECTOR;
+-(void)setFlatBarColor:(UIColor*)color UI_APPEARANCE_SELECTOR;
+
+-(void)setFlatBarSelectedColor:(UIColor*)color UI_APPEARANCE_SELECTOR;
 
 @end

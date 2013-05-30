@@ -47,6 +47,20 @@
     return [[view capture] resizableImageWithCapInsets:UIEdgeInsetsMake(cornerRadius, cornerRadius, cornerRadius, cornerRadius)];
 }
 //////////////////////////////////////////////////////////////////
++(UIImage*)imageWithColor:(UIColor*)color size:(CGSize)size
+{
+    RoundRectView* view = [RoundRectView roundRectWithColor:color rounding:0];
+    view.frame = CGRectMake(0, 0, size.width, size.height);
+    return [view capture];
+}
+//////////////////////////////////////////////////////////////////
++(UIImage*)imageWithColors:(NSArray*)colors ranges:(CGFloat*)ranges size:(CGSize)size
+{
+    RoundRectView* view = [RoundRectView roundRectWithColors:colors ranges:ranges rounding:0];
+    view.frame = CGRectMake(0, 0, size.width, size.height);
+    return [view capture];
+}
+//////////////////////////////////////////////////////////////////
 //circle images. 
 //////////////////////////////////////////////////////////////////
 +(UIImage*)circleImageWithColor:(UIColor*)color size:(CGSize)size
@@ -80,6 +94,16 @@
     UIGraphicsEndImageContext();
     
     return image;
+}
+//////////////////////////////////////////////////////////////////
++(UIImage*)imageWithBorder:(UIColor*)color bodyColor:(UIColor*)bodyColor width:(float)width cornerRadius:(CGFloat)cornerRadius
+{
+    int edge = cornerRadius*2 + 1;
+    RoundRectView* view = [RoundRectView roundRectWithColor:bodyColor rounding:cornerRadius];
+    view.frame = CGRectMake(0, 0, 15, 15);
+    view.borderColor = color;
+    view.borderWidth = width;
+    return [[view capture] resizableImageWithCapInsets:UIEdgeInsetsMake(edge, edge, edge, edge)];;
 }
 //////////////////////////////////////////////////////////////////
 

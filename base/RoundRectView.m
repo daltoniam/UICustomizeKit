@@ -24,10 +24,12 @@
 //////////////////////////////////////////////////////////////////
 - (void)drawRect:(CGRect)rect
 {
+    CGRect frame = CGRectMake(0,0, self.frame.size.width, self.frame.size.height);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
     CGContextSaveGState(ctx);
     
-    CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+    CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame
                                            byRoundingCorners:UIRectCornerAllCorners
                                                  cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
     CGContextAddPath(ctx, path);
@@ -39,9 +41,31 @@
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)newGradientColors, self.colorRange);
-    CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, 0), CGPointMake(0, self.frame.size.height), 0);
+    CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, 0), CGPointMake(0, frame.size.height), 0);
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
+    
+    if(self.borderWidth > 0 && self.borderColor)
+    {
+        CGContextSaveGState(ctx);
+        
+        CGContextSetStrokeColorWithColor(ctx, self.borderColor.CGColor);
+        CGContextSetLineWidth(ctx, self.borderWidth);
+        CGContextSetLineJoin(ctx, kCGLineJoinRound);
+        
+        CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame
+                                               byRoundingCorners:UIRectCornerAllCorners
+                                                     cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
+        CGContextAddPath(ctx, path);
+        CGContextClip(ctx);
+        
+        path = [UIBezierPath bezierPathWithRoundedRect:frame
+                                     byRoundingCorners:UIRectCornerAllCorners
+                                           cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
+        CGContextAddPath(ctx, path);
+        CGContextStrokePath(ctx);
+        CGContextRestoreGState(ctx);
+    }
     CGContextRestoreGState(ctx);
 }
 //////////////////////////////////////////////////////////////////

@@ -22,7 +22,16 @@
         UIImage* selImg = [item.image imageWithOverlayColor:selectedColor];
         [item setFinishedSelectedImage:img withFinishedUnselectedImage:selImg];
     }
+    //[self performSelector:@selector(test) withObject:nil afterDelay:0.01];
 }
+//////////////////////////////////////////////////////////////////
+/*-(void)test
+{
+    CGRect frame = self.frame;
+    frame.size.width += 4;
+    frame.origin.x -= 2;
+    self.frame = frame;
+}*/
 //////////////////////////////////////////////////////////////////
 -(void)setTextColor:(UIColor*)color selected:(UIColor*)selectedColor
 {

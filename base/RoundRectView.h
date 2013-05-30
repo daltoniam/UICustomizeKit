@@ -20,6 +20,12 @@
 //the amount to round the corners
 @property(nonatomic,assign)CGFloat rounding;
 
+//the width of the border
+@property(nonatomic,assign)CGFloat borderWidth;
+
+//the width of the border
+@property(nonatomic,strong)UIColor* borderColor;
+
 //factory methods
 +(RoundRectView*)roundRectWithColor:(UIColor*)color rounding:(int)rounding;
 +(RoundRectView*)roundRectWithColors:(NSArray*)colors ranges:(CGFloat*)ranges rounding:(int)rounding;

@@ -1,6 +1,6 @@
 # UICustomizeKit #
 
-The UICustomizeKit extends standard UIKit components to make amazing looking controls. I saw that there was a lot of good UI kits cropping up for iOS, but not had a full implemention of controls or where/are easy to customize outside of the design scope. The goal of UICustomizeKit is to allow you to customize all controls easily, to create a great style with minimal effort. A Flat and Bootstrap control kits are currently provided. (and hopefully you will contribute and add more!)
+The UICustomizeKit extends standard UIKit components to make amazing looking controls. I saw that there was a lot of good UI kits cropping up for iOS, but none of them had a full implementation of controls or where/are easy to customize outside of the design scope. The goal of UICustomizeKit is to allow you to customize all controls easily, to create a great style with minimal effort. A Flat and Bootstrap control kits are currently provided. (and hopefully you will contribute and add more!)
 
 # Dependancies #
 
@@ -52,7 +52,7 @@ Open your project in Xcode from the .xcworkspace file (not the usual project fil
 +	add AlertView
 +	add statusView (statusBar)
 +	port FontAwesome (and add any other great/open source fonts!)
-+	add TextField/TextView
++	add TextView
 +	add UISwitch
 +	add slider
 +	add loading/progress dialog (more like UIActivityView)

@@ -18,7 +18,8 @@
 {
     CGFloat ranges[] = {0,1};
     self.backgroundImage = [UIImage imageWithColors:[NSArray arrayWithObjects:color,[color adjustColor:-0.12], nil] ranges:ranges size:CGSizeMake(10, 49) cornerRadius:0];
-    self.selectionIndicatorImage = [UIImage imageWithColors:[NSArray arrayWithObjects:[color adjustColor:-0.12],color, nil] ranges:ranges size:CGSizeMake(10, 49) cornerRadius:0];
+    int size = self.frame.size.width/self.items.count;
+    self.selectionIndicatorImage = [UIImage imageWithColors:[NSArray arrayWithObjects:[color adjustColor:-0.12],color, nil] ranges:ranges size:CGSizeMake(size, 49) ];
 }
 //////////////////////////////////////////////////////////////////
 
