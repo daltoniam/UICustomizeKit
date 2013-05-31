@@ -53,7 +53,6 @@ Open your project in Xcode from the .xcworkspace file (not the usual project fil
 +	add statusView (statusBar)
 +	port FontAwesome (and add any other great/open source fonts!)
 +	add TextView
-+	add UISwitch
 +	add slider
 +	add loading/progress dialog (more like UIActivityView)
 +	add a searchBar view

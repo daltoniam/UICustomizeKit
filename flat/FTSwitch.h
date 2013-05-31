@@ -1,0 +1,14 @@
+//////////////////////////////////////////////////////////////////
+//
+//  FTSwitch.h
+//
+//  Created by Dalton Cherry on 5/31/13.
+//  Copyright (c) 2013 basement Krew. All rights reserved.
+//
+//////////////////////////////////////////////////////////////////
+
+#import "BaseSwitchView.h"
+
+@interface FTSwitch : BaseSwitchView
+
+@end

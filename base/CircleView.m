@@ -18,6 +18,7 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
+        self.padding = 0;
     }
     return self;
 }
@@ -25,7 +26,11 @@
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextAddEllipseInRect(ctx, rect);
+    
+    CGPathRef path = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(rect, self.padding, self.padding)].CGPath;
+    CGContextAddPath(ctx, path);
+    CGContextClip(ctx);
+    
     NSMutableArray* newGradientColors = [NSMutableArray arrayWithCapacity:self.colors.count];
     for(UIColor* color in self.colors)
         [newGradientColors addObject:(id)color.CGColor];
@@ -35,7 +40,7 @@
     CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, 0), CGPointMake(0, self.frame.size.height), 0);
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
-    CGContextRestoreGState(ctx);
+    //CGContextRestoreGState(ctx);
     //CGContextSetFillColorWithColor(ctx, self.color.CGColor);
     CGContextFillPath(ctx);
 }

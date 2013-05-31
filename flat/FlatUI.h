@@ -17,3 +17,4 @@
 #import "UITabBar+FTStyle.h"
 #import "UIBarButtonItem+FTStyle.h"
 #import "FTTextField.h"
+#import "FTSwitch.h"
