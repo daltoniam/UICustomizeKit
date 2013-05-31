@@ -26,7 +26,7 @@ typedef enum {
 @property(nonatomic,assign)CGFloat borderWidth;
 
 //default textColor
-//@property(nonatomic,strong) UIColor *textColor;
+@property(nonatomic,strong) UIColor *mainTextColor;
 
 //border color of view
 @property(nonatomic,strong) UIColor *borderColor;

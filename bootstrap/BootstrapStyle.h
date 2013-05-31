@@ -16,3 +16,4 @@
 #import "UINavigationBar+BTStyle.h"
 #import "UITabBar+BTStyle.h"
 #import "UIBarButtonItem+BTStyle.h"
+#import "BTTextField.h"

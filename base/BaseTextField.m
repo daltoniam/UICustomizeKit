@@ -34,15 +34,21 @@
         self.myDelegate = [[TextFieldDelegate alloc] init];
         self.padding = 6;
         self.rounding = 3;
-        self.enabled = YES;
+        //self.enabled = YES;
         self.bodyColor = [UIColor whiteColor];
         self.backgroundColor = [UIColor clearColor];
         [self updateFrame:frame];
         self.returnKeyType = UIReturnKeyDone;
         self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         self.delegate = self.myDelegate;
+        [self performSelector:@selector(firstSetup) withObject:nil afterDelay:0.01];
     }
     return self;
+}
+//////////////////////////////////////////////////////////////////
+-(void)firstSetup
+{
+    [self updateState:textStateNormal];
 }
 //////////////////////////////////////////////////////////////////
 -(void)setFrame:(CGRect)frame
@@ -63,7 +69,6 @@
     }
     else
         self.leftView.frame = CGRectMake(0, 0, self.padding, frame.size.height);
-    [self updateState:textStateNormal];
 }
 //////////////////////////////////////////////////////////////////
 - (void)setDelegate:(id<UITextFieldDelegate>)delegate
@@ -78,44 +83,37 @@
     return self.myDelegate->_userDelegate;
 }
 //////////////////////////////////////////////////////////////////
--(void)layoutSubviews
-{
-    [super layoutSubviews];
-}
-//////////////////////////////////////////////////////////////////
 -(void)updateState:(textState)state
 {
-    UIColor* textColor = self.textColor;
+    UIColor* txtColor = self.mainTextColor;
     UIColor* border = self.borderColor;
     UIColor* body = self.bodyColor;
     if(state == textStateNormal)
     {
-        textColor = self.textColor;
+        txtColor = self.mainTextColor;
     }
     else if(state == textStateDisabled)
     {
-        textColor = self.disabledTextColor;
+        txtColor = self.disabledTextColor;
         border = self.disabledBorderColor;
         body = self.disabledBodyColor;
     }
     else if(state == textStateSelected)
     {
-        textColor = self.selectedTextColor;
+        txtColor = self.selectedTextColor;
         border = self.selectedBorderColor;
         body = self.selectedBodyColor;
     }
     if(!body)
         body = self.bodyColor;
-    if(!textColor)
-        textColor = self.textColor;
+    if(!txtColor)
+        txtColor = self.mainTextColor;
     if(!border)
         border = self.borderColor;
     
-    self.textColor = textColor;
-    //if(self.enabled)
-        self.background = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth cornerRadius:self.rounding];
-    //else
-        self.disabledBackground = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth cornerRadius:self.rounding];
+    self.textColor = txtColor;
+    self.background = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth cornerRadius:self.rounding];
+    self.disabledBackground = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth cornerRadius:self.rounding];
 }
 //////////////////////////////////////////////////////////////////
 -(void)setEnabled:(BOOL)enable

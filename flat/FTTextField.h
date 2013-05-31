@@ -1,0 +1,14 @@
+//////////////////////////////////////////////////////////////////
+//
+//  FTTextField.h
+//
+//  Created by Dalton Cherry on 5/30/13.
+//  Copyright (c) 2013 basement Krew. All rights reserved.
+//
+//////////////////////////////////////////////////////////////////
+
+#import "BaseTextField.h"
+
+@interface FTTextField : BaseTextField
+
+@end
