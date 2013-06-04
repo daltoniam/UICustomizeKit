@@ -11,7 +11,7 @@
 
 @interface UIBarButtonItem (FTStyle)
 
-+(void)setFlatButtonColors:(UIColor*)color UI_APPEARANCE_SELECTOR;
++(void)setFlatButtonColor:(UIColor*)color UI_APPEARANCE_SELECTOR;
 -(void)setFlatColor:(UIColor*)color UI_APPEARANCE_SELECTOR;
 
 @end

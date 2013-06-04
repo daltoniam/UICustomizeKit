@@ -72,7 +72,8 @@
 //////////////////////////////////////////////////////////////////
 - (void)setHighlighted:(BOOL)highlighted
 {
-    [self flatAdjust:highlighted];
+    if(highlighted != self.highlighted)
+        [self flatAdjust:highlighted];
 	[super setHighlighted:highlighted];
 }
 //////////////////////////////////////////////////////////////////

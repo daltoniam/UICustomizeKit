@@ -20,12 +20,12 @@
     [UIBarButtonItem processFlatButtonColors:self color:color];
 }
 //////////////////////////////////////////////////////////////////
-+(void)setFlatButtonColors:(UIColor*)color
++(void)setFlatButtonColor:(UIColor*)color
 {
-    [self setFlatButtonColors:color whenContainedIn:[UINavigationBar class], [UINavigationController class], nil];
+    [self setFlatButtonColor:color whenContainedIn:[UINavigationBar class], [UINavigationController class], nil];
 }
 //////////////////////////////////////////////////////////////////
-+(void)setFlatButtonColors:(UIColor*)color whenContainedIn:(Class <UIAppearanceContainer>)containerClass, ...
++(void)setFlatButtonColor:(UIColor*)color whenContainedIn:(Class <UIAppearanceContainer>)containerClass, ...
 {
     va_list vl;
     va_start(vl, containerClass);
