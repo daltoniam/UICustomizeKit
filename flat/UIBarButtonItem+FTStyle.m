@@ -56,6 +56,7 @@
     [titleTextAttributes setValue:[NSValue valueWithUIOffset:UIOffsetMake(0, 0)] forKey:UITextAttributeTextShadowOffset];
     [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateHighlighted];
+    [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateDisabled];
     
     [appearance setBackgroundImage:buttonImageNormal forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [appearance setBackgroundImage:buttonImageHightlighted forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
