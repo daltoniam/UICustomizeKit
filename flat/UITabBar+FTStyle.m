@@ -26,7 +26,7 @@
     //self.selectionIndicatorImage = [UIImage imageWithColor:[UIColor clearColor] size:CGSizeMake(1, 1) cornerRadius:0];
     int size = self.frame.size.width/self.items.count;
     self.selectionIndicatorImage = [UIImage imageWithColor:color size:CGSizeMake(size, 49)]; //4
-    int width = size;
+    /*int width = size;
     int left = width;
     for(int i = 0; i < self.items.count; i++)
     {
@@ -34,7 +34,7 @@
         lineView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.1];
         [self addSubview:lineView];
         left += width;
-    }
+    }*/
 }
 //////////////////////////////////////////////////////////////////
 

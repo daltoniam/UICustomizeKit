@@ -38,6 +38,7 @@
 +(void)processFlatButtonColors:(id)appearance color:(UIColor*)color
 {
     FTButton* button = [FTButton buttonWithColor:color raised:NO];
+    button.rounding = 0;
     button.frame = CGRectMake(0, 0, 25, 30);
     UIImage *buttonImageNormal = [button capture];
     button.highlighted = YES;

@@ -17,6 +17,13 @@
 //////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame
 {
+    if(frame.size.width == 0 || frame.size.height == 0)
+    {
+        if(self.frame.size.width == 0)
+            frame.size.width = 79;
+        if(self.frame.size.height == 0)
+            frame.size.height = 27;
+    }
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code

@@ -20,7 +20,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor wetAsphaltColor];
+        self.on = YES;
+        self.onBackgroundColor = [UIColor wetAsphaltColor];
+        self.onColor = [UIColor turquoiseColor];
+        self.offBackgroundColor = [UIColor colorWithRed:127/255.0f green:140/255.0f blue:141/255.0f alpha:1];
+        self.offColor = [UIColor colorWithRed:189/255.0f green:195/255.0f blue:199/255.0f alpha:1];
     }
     return self;
 }
@@ -72,23 +76,64 @@
     return view;
 }
 //////////////////////////////////////////////////////////////////
--(void)switchStateChanged
+-(void)setOnColor:(UIColor *)onColor
 {
+    _onColor = onColor;
     if(self.isOn)
     {
-        UIColor* backColor = [UIColor turquoiseColor];
         CircleView* view = (CircleView*)knobView;
-        view.colors = @[backColor,backColor];
+        view.colors = @[onColor,onColor];
         [view setNeedsDisplay];
-        self.backgroundColor = [UIColor wetAsphaltColor];
     }
-    else
+    UILabel* label = (UILabel*)onView;
+    label.textColor = onColor;
+}
+//////////////////////////////////////////////////////////////////
+-(void)setOffColor:(UIColor *)offColor
+{
+    _offColor = offColor;
+    if(!self.isOn)
     {
-        UIColor* backColor = [UIColor colorWithRed:189/255.0f green:195/255.0f blue:199/255.0f alpha:1];
         CircleView* view = (CircleView*)knobView;
-        view.colors = @[backColor,backColor];
+        view.colors = @[offColor,offColor];
         [view setNeedsDisplay];
-        self.backgroundColor = [UIColor colorWithRed:127/255.0f green:140/255.0f blue:141/255.0f alpha:1];
+    }
+    UILabel* label = (UILabel*)offView;
+    label.textColor = offColor;
+}
+//////////////////////////////////////////////////////////////////
+-(void)setOnBackgroundColor:(UIColor *)onBackgroundColor
+{
+    _onBackgroundColor = onBackgroundColor;
+    if(self.isOn)
+        self.backgroundColor = onBackgroundColor;
+}
+//////////////////////////////////////////////////////////////////
+-(void)setOffBackgroundColor:(UIColor *)offBackgroundColor
+{
+    _offBackgroundColor = offBackgroundColor;
+    if(!self.isOn)
+        self.backgroundColor = offBackgroundColor;
+}
+//////////////////////////////////////////////////////////////////
+-(void)switchStateChanged
+{
+    if(self.backgroundColor)
+    {
+        if(self.isOn)
+        {
+            CircleView* view = (CircleView*)knobView;
+            view.colors = @[self.onColor,self.onColor];
+            [view setNeedsDisplay];
+            self.backgroundColor = self.onBackgroundColor;
+        }
+        else
+        {
+            CircleView* view = (CircleView*)knobView;
+            view.colors = @[self.offColor,self.offColor];
+            [view setNeedsDisplay];
+            self.backgroundColor = self.offBackgroundColor;
+        }
     }
 }
 //////////////////////////////////////////////////////////////////

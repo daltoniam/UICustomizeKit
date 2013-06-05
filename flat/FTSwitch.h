@@ -11,4 +11,15 @@
 
 @interface FTSwitch : BaseSwitchView
 
+//the background color in the on state
+@property(nonatomic,strong)UIColor* onBackgroundColor;
+
+//the text and knob color in the on state
+@property(nonatomic,strong)UIColor* onColor;
+
+@property(nonatomic,strong)UIColor* offBackgroundColor;
+
+//the text and knob color in the off state
+@property(nonatomic,strong)UIColor* offColor;
+
 @end
