@@ -32,4 +32,6 @@
 //change a images color to a new color
 -(UIImage*)imageWithOverlayColor:(UIColor*)color;
 
+- (UIImage*)fixOrientation;
+
 @end
