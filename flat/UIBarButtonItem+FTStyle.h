@@ -12,6 +12,7 @@
 @interface UIBarButtonItem (FTStyle)
 
 +(void)setFlatButtonColor:(UIColor*)color UI_APPEARANCE_SELECTOR;
++(void)setFlatButtonColor:(UIColor*)color whenContainedIn:(Class <UIAppearanceContainer>)containerClass, ... UI_APPEARANCE_SELECTOR;
 -(void)setFlatColor:(UIColor*)color UI_APPEARANCE_SELECTOR;
 
 @end
