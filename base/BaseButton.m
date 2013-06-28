@@ -73,7 +73,7 @@
     // draws body and gradient
     CGContextSaveGState(ctx);
     frame.origin.y -= 0.12;
-    CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(frame, 0.2, 0.2)
+    CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame//CGRectInset(frame, 0.2, 0.2)
                                            byRoundingCorners:self.corners
                                                  cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
     

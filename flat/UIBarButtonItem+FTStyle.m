@@ -40,7 +40,7 @@
 {
     FTButton* button = [FTButton buttonWithColor:color raised:NO];
     button.rounding = 2;
-    button.frame = CGRectMake(0, 0, 25, 30);
+    button.frame = CGRectMake(0, 0, 26, 30);
     UIImage *buttonImageNormal = [button capture];
     button.highlighted = YES;
     UIImage *buttonImageHightlighted = [button capture];

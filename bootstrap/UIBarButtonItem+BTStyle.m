@@ -38,7 +38,7 @@
 +(void)processButtonColors:(id)appearance color:(UIColor*)color
 {
     BTButton* button = [BTButton buttonWithColor:[color adjustColor:-0.12]];
-    button.frame = CGRectMake(0, 0, 25, 30);
+    button.frame = CGRectMake(0, 0, 26, 30);
     UIImage *buttonImageNormal = [button capture];
     button.highlighted = YES;
     UIImage *buttonImageHightlighted = [button capture];
