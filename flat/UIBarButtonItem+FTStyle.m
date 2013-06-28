@@ -7,6 +7,7 @@
 //
 //////////////////////////////////////////////////////////////////
 
+#import "UIBarButtonItem+BaseStyle.h"
 #import "UIBarButtonItem+FTStyle.h"
 #import "UIColor+BaseColor.h"
 #import "UIImage+BaseImage.h"
@@ -38,22 +39,13 @@
 +(void)processFlatButtonColors:(id)appearance color:(UIColor*)color
 {
     FTButton* button = [FTButton buttonWithColor:color raised:NO];
-    button.rounding = 0;
+    button.rounding = 2;
     button.frame = CGRectMake(0, 0, 25, 30);
     UIImage *buttonImageNormal = [button capture];
     button.highlighted = YES;
     UIImage *buttonImageHightlighted = [button capture];
     
-    NSMutableDictionary *titleTextAttributes = nil;
-    if([appearance titleTextAttributesForState:UIControlStateNormal])
-    {
-        if([[appearance titleTextAttributesForState:UIControlStateNormal] isKindOfClass:[NSMutableDictionary class]])
-            titleTextAttributes = (NSMutableDictionary*)[appearance titleTextAttributesForState:UIControlStateNormal];
-        else
-            titleTextAttributes = [[appearance titleTextAttributesForState:UIControlStateNormal] mutableCopy];
-    }
-    if (!titleTextAttributes)
-        titleTextAttributes = [NSMutableDictionary dictionary];
+    NSMutableDictionary *titleTextAttributes = [UIBarButtonItem titleTextAttribs:appearance forState:UIControlStateNormal];
     [titleTextAttributes setValue:[NSValue valueWithUIOffset:UIOffsetMake(0, 0)] forKey:UITextAttributeTextShadowOffset];
     [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateHighlighted];

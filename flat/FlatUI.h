@@ -11,6 +11,7 @@
 #import "UIColor+BaseColor.h"
 #import "UIImage+BaseImage.h"
 #import "UITabBar+BaseStyle.h"
+#import "UIBarButtonItem+BaseStyle.h"
 #import "FTButton.h"
 #import "FTProgressView.h"
 #import "UINavigationBar+FTStyle.h"
