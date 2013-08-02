@@ -99,5 +99,14 @@
     return button;
 }
 //////////////////////////////////////////////////////////////////
++(FTButton*)backButtonWithColor:(UIColor*)color raised:(BOOL)raise
+{
+    FTButton* button = [[FTButton alloc] init];
+    button.isBackButton = YES;
+    [button setColor:color raised:raise];
+    [button setTitleColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateDisabled];
+    return button;
+}
+//////////////////////////////////////////////////////////////////
 
 @end

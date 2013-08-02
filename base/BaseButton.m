@@ -61,7 +61,11 @@
         CGContextSetLineWidth(ctx, self.borderWidth);
         CGContextSetLineJoin(ctx, kCGLineJoinRound);
         
-        CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame
+        CGPathRef path = NULL;
+        if(self.isBackButton)
+            path = [self backButtonPath:frame].CGPath;
+        else
+            path = [UIBezierPath bezierPathWithRoundedRect:frame
                                                byRoundingCorners:self.corners
                                                      cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
         CGContextAddPath(ctx, path);
@@ -73,7 +77,11 @@
     // draws body and gradient
     CGContextSaveGState(ctx);
     frame.origin.y -= 0.12;
-    CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame//CGRectInset(frame, 0.2, 0.2)
+    CGPathRef path =  NULL;
+    if(self.isBackButton)
+        path = [self backButtonPath:frame].CGPath;
+    else
+        path = [UIBezierPath bezierPathWithRoundedRect:frame//CGRectInset(frame, 0.2, 0.2)
                                            byRoundingCorners:self.corners
                                                  cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
     
@@ -123,6 +131,41 @@
         
     }*/
     [super drawRect:rect];
+}
+//////////////////////////////////////////////////////////////////
+-(UIBezierPath*)backButtonPath:(CGRect)frame
+{
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    CGPoint mPoint = CGPointMake(CGRectGetMaxX(frame) - self.rounding, frame.origin.y);
+    CGPoint ctrlPoint = mPoint;
+    [path moveToPoint:mPoint];
+    
+    ctrlPoint.y += self.rounding;
+    mPoint.x += self.rounding;
+    mPoint.y += self.rounding;
+    if (self.rounding > 0)
+        [path addArcWithCenter:ctrlPoint radius:self.rounding startAngle:(float)M_PI + (float)M_PI_2 endAngle:0 clockwise:YES];
+    
+    mPoint.y = CGRectGetMaxY(frame) - self.rounding;
+    [path addLineToPoint:mPoint];
+    
+    ctrlPoint = mPoint;
+    mPoint.y += self.rounding;
+    mPoint.x -= self.rounding;
+    ctrlPoint.x -= self.rounding;
+    if (self.rounding > 0)
+        [path addArcWithCenter:ctrlPoint radius:self.rounding startAngle:0 endAngle:(float)M_PI_2 clockwise:YES];
+    
+    mPoint.x = frame.origin.x + (10.0f);
+    [path addLineToPoint:mPoint];
+    
+    [path addLineToPoint:CGPointMake(frame.origin.x, CGRectGetMidY(frame))];
+    
+    mPoint.y = frame.origin.y;
+    [path addLineToPoint:mPoint];
+    
+    [path closePath];
+    return path;
 }
 //////////////////////////////////////////////////////////////////
 -(void)cleanup

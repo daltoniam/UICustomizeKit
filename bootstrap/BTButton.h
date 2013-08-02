@@ -13,6 +13,7 @@
 
 //create a new button with a color
 +(BTButton*)buttonWithColor:(UIColor*)color;
++(BTButton*)backButtonWithColor:(UIColor*)color;
 
 -(void)setColor:(UIColor*)color;
 

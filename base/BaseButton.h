@@ -42,6 +42,9 @@
 //the amount to round the corners
 @property(nonatomic,assign)CGFloat rounding;
 
+//the amount to round the corners
+@property(nonatomic,assign)BOOL isBackButton;
+
 //the corners to round
 @property(nonatomic,assign)UIRectCorner corners;
 

@@ -54,6 +54,35 @@
     [appearance setBackgroundImage:buttonImageNormal forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [appearance setBackgroundImage:buttonImageHightlighted forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     
+    button = [FTButton backButtonWithColor:color raised:NO];
+    button.rounding = 2;
+    button.frame = CGRectMake(0, 0, 30, 30);
+    UIImage *backButtonPortraitImage = [button capture];
+    button.highlighted = YES;
+    UIImage *highlightedBackButtonPortraitImage = [button capture];
+    
+    button.frame = CGRectMake(0, 0, 40, 22);
+    UIImage *backButtonLandscapeImage = [button capture];
+    button.highlighted = YES;
+    UIImage *highlightedBackButtonLandscapeImage = [button capture];
+
+    [appearance setBackButtonBackgroundImage:backButtonPortraitImage
+                                    forState:UIControlStateNormal
+                                  barMetrics:UIBarMetricsDefault];
+    
+    [appearance setBackButtonBackgroundImage:backButtonLandscapeImage
+                                    forState:UIControlStateNormal
+                                  barMetrics:UIBarMetricsLandscapePhone];
+    [appearance setBackButtonBackgroundImage:highlightedBackButtonPortraitImage
+                                    forState:UIControlStateHighlighted
+                                  barMetrics:UIBarMetricsDefault];
+    [appearance setBackButtonBackgroundImage:highlightedBackButtonLandscapeImage
+                                    forState:UIControlStateHighlighted
+                                  barMetrics:UIBarMetricsLandscapePhone];
+    
+    [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, 1.0f) forBarMetrics:UIBarMetricsDefault];
+    [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, 1.0f) forBarMetrics:UIBarMetricsLandscapePhone];
+    
     //need to do the back button as well.
 }
 //////////////////////////////////////////////////////////////////

@@ -17,5 +17,6 @@
 -(void)setColor:(UIColor*)color raised:(BOOL)raise;
 
 +(FTButton*)buttonWithColor:(UIColor*)color raised:(BOOL)raise;
++(FTButton*)backButtonWithColor:(UIColor*)color raised:(BOOL)raise;
 
 @end

@@ -71,5 +71,14 @@
     return button;
 }
 //////////////////////////////////////////////////////////////////
++(BTButton*)backButtonWithColor:(UIColor*)color
+{
+    BTButton* button = [[BTButton alloc] init];
+    button.isBackButton = YES;
+    [button setColor:color];
+    [button setTitleColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateDisabled];
+    return button;
+}
+//////////////////////////////////////////////////////////////////
 
 @end
