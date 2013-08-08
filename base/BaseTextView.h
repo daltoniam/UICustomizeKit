@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////
 //
-//  BaseTextField.h
+//  BaseTextView.h
 //
-//  Created by Dalton Cherry on 5/30/13.
+//  Created by Dalton Cherry on 8/8/13.
 //  Copyright (c) 2013 basement Krew. All rights reserved.
 //
 //////////////////////////////////////////////////////////////////
@@ -10,12 +10,18 @@
 #import <UIKit/UIKit.h>
 #import "BaseText.h"
 
-@interface BaseTextField : UITextField
+@interface BaseTextView : UITextView
+{
+    UILabel* placeHolderLabel;
+}
 
 -(void)updateState:(textState)state;
 
 //the amount to round the corners
 @property(nonatomic,assign)CGFloat rounding;
+
+//the place holder text (still in progress)
+//@property(nonatomic,assign)NSString* placeholder;
 
 //the width of the border
 @property(nonatomic,assign)CGFloat borderWidth;
