@@ -18,6 +18,7 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
+        self.corners = UIRectCornerAllCorners;
     }
     return self;
 }
@@ -30,7 +31,7 @@
     CGContextSaveGState(ctx);
     
     CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame
-                                           byRoundingCorners:UIRectCornerAllCorners
+                                           byRoundingCorners:self.corners
                                                  cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
     CGContextAddPath(ctx, path);
     CGContextClip(ctx);
@@ -54,13 +55,13 @@
         CGContextSetLineJoin(ctx, kCGLineJoinRound);
         
         CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame
-                                               byRoundingCorners:UIRectCornerAllCorners
+                                               byRoundingCorners:self.corners
                                                      cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
         CGContextAddPath(ctx, path);
         CGContextClip(ctx);
         
         path = [UIBezierPath bezierPathWithRoundedRect:frame
-                                     byRoundingCorners:UIRectCornerAllCorners
+                                     byRoundingCorners:self.corners
                                            cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
         CGContextAddPath(ctx, path);
         CGContextStrokePath(ctx);
