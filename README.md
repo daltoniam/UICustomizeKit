@@ -55,13 +55,13 @@ Open your project in Xcode from the .xcworkspace file (not the usual project fil
 +	BarButton
 +	NavigationBar
 +	TextField
++	TextView
 +	SwitchView
 
 ### TODOs: ###
 +	add AlertView
 +	add statusView (statusBar)
 +	port FontAwesome (and add any other great/open source fonts!)
-+	add TextView
 +	add slider
 +	add loading/progress dialog (more like UIActivityView)
 +	add a searchBar view
