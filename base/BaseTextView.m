@@ -37,7 +37,7 @@
         self.bodyColor = [UIColor whiteColor];
         self.backgroundColor = [UIColor clearColor];
         [self updateFrame:frame];
-        self.returnKeyType = UIReturnKeyDone;
+        //self.returnKeyType = UIReturnKeyDone;
         self.delegate = self.myDelegate;
         [self performSelector:@selector(firstSetup) withObject:nil afterDelay:0.01];
     }
