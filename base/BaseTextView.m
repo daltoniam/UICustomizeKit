@@ -46,7 +46,10 @@
 //////////////////////////////////////////////////////////////////
 -(void)firstSetup
 {
-    [self updateState:textStateNormal];
+    if(self.editable)
+        [self updateState:textStateNormal];
+    else
+        [self updateState:textStateDisabled];
 }
 //////////////////////////////////////////////////////////////////
 -(void)setFrame:(CGRect)frame

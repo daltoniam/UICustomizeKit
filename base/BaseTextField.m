@@ -48,7 +48,10 @@
 //////////////////////////////////////////////////////////////////
 -(void)firstSetup
 {
-    [self updateState:textStateNormal];
+    if(self.enabled)
+        [self updateState:textStateNormal];
+    else
+        [self updateState:textStateDisabled];
 }
 //////////////////////////////////////////////////////////////////
 -(void)setFrame:(CGRect)frame
