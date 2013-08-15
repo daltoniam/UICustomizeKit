@@ -63,7 +63,7 @@
         
         CGPathRef path = NULL;
         if(self.isBackButton)
-            path = [self backButtonPath:frame].CGPath;
+            path = [self backButtonPath:frame];
         else
             path = [UIBezierPath bezierPathWithRoundedRect:frame
                                                byRoundingCorners:self.corners
@@ -79,7 +79,7 @@
     frame.origin.y -= 0.12;
     CGPathRef path =  NULL;
     if(self.isBackButton)
-        path = [self backButtonPath:frame].CGPath;
+        path = [self backButtonPath:frame];
     else
         path = [UIBezierPath bezierPathWithRoundedRect:frame//CGRectInset(frame, 0.2, 0.2)
                                            byRoundingCorners:self.corners
@@ -133,7 +133,7 @@
     [super drawRect:rect];
 }
 //////////////////////////////////////////////////////////////////
--(UIBezierPath*)backButtonPath:(CGRect)frame
+-(CGPathRef)backButtonPath:(CGRect)frame
 {
     UIBezierPath *path = [UIBezierPath bezierPath];
     CGPoint mPoint = CGPointMake(CGRectGetMaxX(frame) - self.rounding, frame.origin.y);
@@ -165,7 +165,7 @@
     [path addLineToPoint:mPoint];
     
     [path closePath];
-    return path;
+    return CGPathRetain(path.CGPath); //for ARC
 }
 //////////////////////////////////////////////////////////////////
 -(void)cleanup

@@ -82,8 +82,6 @@
     
     [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, 1.0f) forBarMetrics:UIBarMetricsDefault];
     [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, 1.0f) forBarMetrics:UIBarMetricsLandscapePhone];
-    
-    //need to do the back button as well.
 }
 //////////////////////////////////////////////////////////////////
 
