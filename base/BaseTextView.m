@@ -8,6 +8,7 @@
 //////////////////////////////////////////////////////////////////
 
 #import "BaseTextView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface TextViewDelegate : NSObject <UITextViewDelegate> {
 @public

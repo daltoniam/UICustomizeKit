@@ -116,8 +116,9 @@
         border = self.borderColor;
     
     self.textColor = txtColor;
-    self.background = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth*2 cornerRadius:self.rounding];
-    self.disabledBackground = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth*2 cornerRadius:self.rounding];
+    float size = self.borderWidth+1;
+    self.background = [[UIImage imageWithBorder:border bodyColor:body width:self.borderWidth*2 cornerRadius:self.rounding] resizableImageWithCapInsets:UIEdgeInsetsMake(size,size,size,size)];
+    self.disabledBackground = [[UIImage imageWithBorder:border bodyColor:body width:self.borderWidth*2 cornerRadius:self.rounding] resizableImageWithCapInsets:UIEdgeInsetsMake(size,size,size,size)];
 }
 //////////////////////////////////////////////////////////////////
 -(void)setEnabled:(BOOL)enable
