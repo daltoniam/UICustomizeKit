@@ -37,14 +37,40 @@
 //this is a helper method
 +(void)processButtonColors:(id)appearance color:(UIColor*)color
 {
-    BTButton* button = [BTButton buttonWithColor:[color adjustColor:-0.12]];
-    button.frame = CGRectMake(0, 0, 25, 30);
+    UIColor *newColor = [color adjustColor:-0.12];
+    BTButton* button = [BTButton buttonWithColor:newColor];
+    button.frame = CGRectMake(0, 0, 26, 30);
     UIImage *buttonImageNormal = [button capture];
     button.highlighted = YES;
     UIImage *buttonImageHightlighted = [button capture];
     
     [appearance setBackgroundImage:buttonImageNormal forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [appearance setBackgroundImage:buttonImageHightlighted forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    
+    button = [BTButton backButtonWithColor:newColor];
+    button.frame = CGRectMake(0, 0, 30, 30);
+    UIImage *backButtonPortraitImage = [button capture];
+    button.highlighted = YES;
+    UIImage *highlightedBackButtonPortraitImage = [button capture];
+    
+    button.frame = CGRectMake(0, 0, 40, 22);
+    UIImage *backButtonLandscapeImage = [button capture];
+    button.highlighted = YES;
+    UIImage *highlightedBackButtonLandscapeImage = [button capture];
+    
+    [appearance setBackButtonBackgroundImage:backButtonPortraitImage
+                                    forState:UIControlStateNormal
+                                  barMetrics:UIBarMetricsDefault];
+    
+    [appearance setBackButtonBackgroundImage:backButtonLandscapeImage
+                                    forState:UIControlStateNormal
+                                  barMetrics:UIBarMetricsLandscapePhone];
+    [appearance setBackButtonBackgroundImage:highlightedBackButtonPortraitImage
+                                    forState:UIControlStateHighlighted
+                                  barMetrics:UIBarMetricsDefault];
+    [appearance setBackButtonBackgroundImage:highlightedBackButtonLandscapeImage
+                                    forState:UIControlStateHighlighted
+                                  barMetrics:UIBarMetricsLandscapePhone];
 }
 //////////////////////////////////////////////////////////////////
 

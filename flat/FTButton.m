@@ -19,7 +19,7 @@
     self.rounding = 4;
     //self.borderWidth = 1;
     self.corners = UIRectCornerAllCorners;
-    self.titleLabel.shadowOffset = CGSizeMake(0.0, 0.5);
+    self.titleLabel.shadowOffset = CGSizeMake(0.0, 0.1);
 }
 //////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame
@@ -95,7 +95,16 @@
 {
     FTButton* button = [[FTButton alloc] init];
     [button setColor:color raised:raise];
-    [button setTitleColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateDisabled];
+    [button setTitleColor:[UIColor colorWithWhite:1 alpha:0.75] forState:UIControlStateDisabled];
+    return button;
+}
+//////////////////////////////////////////////////////////////////
++(FTButton*)backButtonWithColor:(UIColor*)color raised:(BOOL)raise
+{
+    FTButton* button = [[FTButton alloc] init];
+    button.isBackButton = YES;
+    [button setColor:color raised:raise];
+    [button setTitleColor:[UIColor colorWithWhite:1 alpha:0.75] forState:UIControlStateDisabled];
     return button;
 }
 //////////////////////////////////////////////////////////////////

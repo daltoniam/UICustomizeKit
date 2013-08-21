@@ -7,10 +7,10 @@
 //
 //////////////////////////////////////////////////////////////////
 
-#import "FTTextField.h"
+#import "FTTextView.h"
 #import "UIColor+BaseColor.h"
 
-@implementation FTTextField
+@implementation FTTextView
 
 //////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame

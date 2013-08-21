@@ -81,6 +81,11 @@
     onBackgroundView.frame = CGRectMake(0, 0, scrollView.frame.size.width-(size/2), scrollView.frame.size.height);
     left = onBackgroundView.frame.size.width;
     offBackgroundView.frame = CGRectMake(left, 0, scrollView.frame.size.width-(size/2), scrollView.frame.size.height);
+    
+    CGPoint point = CGPointMake(scrollView.frame.size.width-scrollView.frame.size.height, 0);
+    if(self.isOn)
+        point = CGPointMake(0, 0);
+    [scrollView setContentOffset:point animated:NO];
 }
 //////////////////////////////////////////////////////////////////
 -(UIView*)onViewSetup

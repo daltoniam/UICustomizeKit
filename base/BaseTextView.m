@@ -1,29 +1,28 @@
 //////////////////////////////////////////////////////////////////
 //
-//  BaseTextField.m
+//  BaseTextView.m
 //
-//  Created by Dalton Cherry on 5/30/13.
+//  Created by Dalton Cherry on 8/8/13.
 //  Copyright (c) 2013 basement Krew. All rights reserved.
 //
 //////////////////////////////////////////////////////////////////
 
-#import "BaseTextField.h"
-#import "UIImage+BaseImage.h"
-#import "UIColor+BaseColor.h"
+#import "BaseTextView.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface TextFieldDelegate : NSObject <UITextFieldDelegate> {
+@interface TextViewDelegate : NSObject <UITextViewDelegate> {
 @public
-    id<UITextFieldDelegate> _userDelegate;
+    id<UITextViewDelegate> _userDelegate;
 }
 @end
 
-@interface BaseTextField ()
+@interface BaseTextView ()
 
-@property(nonatomic,strong)TextFieldDelegate* myDelegate;
+@property(nonatomic,strong)TextViewDelegate* myDelegate;
 
 @end
 
-@implementation BaseTextField
+@implementation BaseTextView
 
 //////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame
@@ -31,15 +30,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.myDelegate = [[TextFieldDelegate alloc] init];
+        self.myDelegate = [[TextViewDelegate alloc] init];
         self.myDelegate->_userDelegate = nil;
-        self.padding = 6;
+        self.padding = 1.5;
         self.rounding = 3;
+        //self.enabled = YES;
         self.bodyColor = [UIColor whiteColor];
         self.backgroundColor = [UIColor clearColor];
         [self updateFrame:frame];
-        self.returnKeyType = UIReturnKeyDone;
-        self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        //self.returnKeyType = UIReturnKeyDone;
         self.delegate = self.myDelegate;
         [self performSelector:@selector(firstSetup) withObject:nil afterDelay:0.01];
     }
@@ -48,7 +47,7 @@
 //////////////////////////////////////////////////////////////////
 -(void)firstSetup
 {
-    if(self.enabled)
+    if(self.editable)
         [self updateState:textStateNormal];
     else
         [self updateState:textStateDisabled];
@@ -62,19 +61,31 @@
 //////////////////////////////////////////////////////////////////
 -(void)updateFrame:(CGRect)frame
 {
-    if(!self.leftView)
-    {
-        UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.padding, frame.size.height)];
-        self.leftView = paddingView;
-        self.rightView = paddingView;
-        self.rightViewMode = UITextFieldViewModeAlways;
-        self.leftViewMode = UITextFieldViewModeAlways;
-    }
-    else
-        self.leftView.frame = CGRectMake(0, 0, self.padding, frame.size.height);
+    //placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.padding, self.padding,
+    //                                                             self.frame.size.width-(self.padding*2), -(self.padding*2))];
 }
 //////////////////////////////////////////////////////////////////
-- (void)setDelegate:(id<UITextFieldDelegate>)delegate
+-(void)setPadding:(CGFloat)padding
+{
+    _padding = padding;
+    self.contentInset = UIEdgeInsetsMake(padding, padding, padding, padding);
+}
+//////////////////////////////////////////////////////////////////
+/*-(void)setPlaceholder:(NSString *)placeholder
+{
+    _placeholder = placeholder;
+    if(!placeHolderLabel)
+    {
+        placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.padding, self.padding,
+                                                                     self.frame.size.width-(self.padding*2), -(self.padding*2))];
+        placeHolderLabel.backgroundColor = [UIColor clearColor];
+        //placeHolderLabel.textColor = [UIColor lightGrayColor];
+        placeHolderLabel.text = placeholder;
+        [self addSubview:placeHolderLabel];
+    }
+}*/
+//////////////////////////////////////////////////////////////////
+- (void)setDelegate:(id<UITextViewDelegate>)delegate
 {
     if(delegate != self.myDelegate)
         self.myDelegate->_userDelegate = delegate;
@@ -82,9 +93,9 @@
     super.delegate = (id)self.myDelegate;
 }
 //////////////////////////////////////////////////////////////////
-- (id<UITextFieldDelegate>)delegate
+- (id<UITextViewDelegate>)delegate
 {
-    return self.myDelegate->_userDelegate;
+    return self.myDelegate;
 }
 //////////////////////////////////////////////////////////////////
 -(void)updateState:(textState)state
@@ -116,15 +127,18 @@
         border = self.borderColor;
     
     self.textColor = txtColor;
-    float size = self.borderWidth+1;
-    self.background = [[UIImage imageWithBorder:border bodyColor:body width:self.borderWidth*2 cornerRadius:self.rounding] resizableImageWithCapInsets:UIEdgeInsetsMake(size,size,size,size)];
-    self.disabledBackground = [[UIImage imageWithBorder:border bodyColor:body width:self.borderWidth*2 cornerRadius:self.rounding] resizableImageWithCapInsets:UIEdgeInsetsMake(size,size,size,size)];
+    self.backgroundColor = body;
+    self.layer.cornerRadius = self.rounding;
+    self.layer.borderColor = border.CGColor;
+    self.layer.borderWidth = self.borderWidth;
+    //self.background = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth cornerRadius:self.rounding];
+    //self.disabledBackground = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth cornerRadius:self.rounding];
 }
 //////////////////////////////////////////////////////////////////
--(void)setEnabled:(BOOL)enable
+-(void)setEditable:(BOOL)editable
 {
-    [super setEnabled:enable];
-    if(enable)
+    [super setEditable:editable];
+    if(editable)
         [self updateState:textStateNormal];
     else
         [self updateState:textStateDisabled];
@@ -138,34 +152,21 @@
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
-@implementation TextFieldDelegate
+@implementation TextViewDelegate
 
 //////////////////////////////////////////////////////////////////
-- (void)textFieldDidBeginEditing:(UITextField*)textField
+- (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [(BaseTextField*)textField updateState:textStateSelected];
-    if([_userDelegate respondsToSelector:@selector(textFieldDidBeginEditing:)])
-        [_userDelegate textFieldDidBeginEditing:textField];
+    [(BaseTextView*)textView updateState:textStateSelected];
+    if([_userDelegate respondsToSelector:@selector(textViewDidBeginEditing:)])
+        [_userDelegate textViewDidBeginEditing:textView];
 }
 //////////////////////////////////////////////////////////////////
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textViewDidEndEditing:(UITextView *)textView
 {
-    [(BaseTextField*)textField updateState:textStateNormal];
-    if([_userDelegate respondsToSelector:@selector(textFieldDidEndEditing:)])
-        [_userDelegate textFieldDidEndEditing:textField];
-}
-//////////////////////////////////////////////////////////////////
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if([_userDelegate respondsToSelector:@selector(textFieldShouldReturn:)])
-        return [_userDelegate textFieldShouldReturn:textField];
-    [textField resignFirstResponder];
-    return YES;
-}
-//////////////////////////////////////////////////////////////////
--(void)textFieldDidBecomeFirstResponder:(id)textField
-{
-    //not sure why I had to implement this...., but will crash if I do not, more investigation is needed.
+    [(BaseTextView*)textView updateState:textStateNormal];
+    if([_userDelegate respondsToSelector:@selector(textViewDidEndEditing:)])
+        [_userDelegate textViewDidEndEditing:textView];
 }
 //////////////////////////////////////////////////////////////////
 - (BOOL)respondsToSelector:(SEL)selector

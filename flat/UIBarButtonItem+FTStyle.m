@@ -7,6 +7,7 @@
 //
 //////////////////////////////////////////////////////////////////
 
+#import "UIBarButtonItem+BaseStyle.h"
 #import "UIBarButtonItem+FTStyle.h"
 #import "UIColor+BaseColor.h"
 #import "UIImage+BaseImage.h"
@@ -38,22 +39,13 @@
 +(void)processFlatButtonColors:(id)appearance color:(UIColor*)color
 {
     FTButton* button = [FTButton buttonWithColor:color raised:NO];
-    button.rounding = 0;
-    button.frame = CGRectMake(0, 0, 25, 30);
+    button.rounding = 2;
+    button.frame = CGRectMake(0, 0, 26, 30);
     UIImage *buttonImageNormal = [button capture];
     button.highlighted = YES;
     UIImage *buttonImageHightlighted = [button capture];
     
-    NSMutableDictionary *titleTextAttributes = nil;
-    if([appearance titleTextAttributesForState:UIControlStateNormal])
-    {
-        if([[appearance titleTextAttributesForState:UIControlStateNormal] isKindOfClass:[NSMutableDictionary class]])
-            titleTextAttributes = (NSMutableDictionary*)[appearance titleTextAttributesForState:UIControlStateNormal];
-        else
-            titleTextAttributes = [[appearance titleTextAttributesForState:UIControlStateNormal] mutableCopy];
-    }
-    if (!titleTextAttributes)
-        titleTextAttributes = [NSMutableDictionary dictionary];
+    NSMutableDictionary *titleTextAttributes = [UIBarButtonItem titleTextAttribs:appearance forState:UIControlStateNormal];
     [titleTextAttributes setValue:[NSValue valueWithUIOffset:UIOffsetMake(0, 0)] forKey:UITextAttributeTextShadowOffset];
     [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateHighlighted];
@@ -62,7 +54,34 @@
     [appearance setBackgroundImage:buttonImageNormal forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [appearance setBackgroundImage:buttonImageHightlighted forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     
-    //need to do the back button as well.
+    button = [FTButton backButtonWithColor:color raised:NO];
+    button.rounding = 2;
+    button.frame = CGRectMake(0, 0, 30, 30);
+    UIImage *backButtonPortraitImage = [button capture];
+    button.highlighted = YES;
+    UIImage *highlightedBackButtonPortraitImage = [button capture];
+    
+    button.frame = CGRectMake(0, 0, 40, 22);
+    UIImage *backButtonLandscapeImage = [button capture];
+    button.highlighted = YES;
+    UIImage *highlightedBackButtonLandscapeImage = [button capture];
+
+    [appearance setBackButtonBackgroundImage:backButtonPortraitImage
+                                    forState:UIControlStateNormal
+                                  barMetrics:UIBarMetricsDefault];
+    
+    [appearance setBackButtonBackgroundImage:backButtonLandscapeImage
+                                    forState:UIControlStateNormal
+                                  barMetrics:UIBarMetricsLandscapePhone];
+    [appearance setBackButtonBackgroundImage:highlightedBackButtonPortraitImage
+                                    forState:UIControlStateHighlighted
+                                  barMetrics:UIBarMetricsDefault];
+    [appearance setBackButtonBackgroundImage:highlightedBackButtonLandscapeImage
+                                    forState:UIControlStateHighlighted
+                                  barMetrics:UIBarMetricsLandscapePhone];
+    
+    [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, 1.0f) forBarMetrics:UIBarMetricsDefault];
+    [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, 1.0f) forBarMetrics:UIBarMetricsLandscapePhone];
 }
 //////////////////////////////////////////////////////////////////
 
