@@ -1,16 +1,16 @@
 //////////////////////////////////////////////////////////////////
 //
-//  BTTextField.m
+//  BTTextView.m
 //
-//  Created by Dalton Cherry on 5/30/13.
+//  Created by Dalton Cherry on 8/21/13.
 //  Copyright (c) 2013 basement Krew. All rights reserved.
 //
 //////////////////////////////////////////////////////////////////
 
-#import "BTTextField.h"
+#import "BTTextView.h"
 #import "UIColor+BaseColor.h"
 
-@implementation BTTextField
+@implementation BTTextView
 
 //////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame
