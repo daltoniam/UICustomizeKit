@@ -20,13 +20,13 @@
 //your normal fill color
 @property(nonatomic,strong)NSArray* colors;
 
-//the float filll gradient
+//the float fill gradient
 @property(nonatomic,assign)CGFloat* colorRange;
 
-//your selected/hightlight color
+//your background/track color
 @property(nonatomic,strong)NSArray* trackColors;
 
-//the float selected gradient
+//the float background/track gradient
 @property(nonatomic,assign)CGFloat* trackRange;
 
 //the width of the border

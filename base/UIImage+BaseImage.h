@@ -13,6 +13,7 @@
 @interface UIView (BaseImage)
 
 -(UIImage*)capture;
+-(UIImage*)capture:(UIEdgeInsets)insets;
 
 @end
 
@@ -33,5 +34,7 @@
 -(UIImage*)imageWithOverlayColor:(UIColor*)color;
 
 - (UIImage*)fixOrientation;
+
+-(UIImage*)cropImage:(UIEdgeInsets)insets;
 
 @end

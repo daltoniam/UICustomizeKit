@@ -4,7 +4,7 @@ The UICustomizeKit extends standard UIKit components to make amazing looking con
 
 # Dependancies #
 
-Requires CoreGraphics framework. 
+Requires CoreGraphics framework, quartz framework. 
 
 # Examples #
 
