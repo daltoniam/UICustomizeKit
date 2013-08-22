@@ -46,12 +46,6 @@
     UIImage *img = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     return img;
-    /*UIGraphicsBeginImageContextWithOptions(CGSizeMake(rect.size.width, rect.size.height), NO, 0.0); //self.opaque
-    //UIRectClip(rect);
-    [self drawInRect:CGRectMake(-rect.origin.x, -rect.origin.y, rect.size.width, rect.size.height+rect.origin.y)];
-    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return img;*/
 }
 //////////////////////////////////////////////////////////////////
 //round rect images.
