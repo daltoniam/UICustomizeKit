@@ -13,7 +13,7 @@
 @interface UIView (BaseImage)
 
 -(UIImage*)capture;
--(UIImage*)capture:(UIEdgeInsets)insets;
+-(UIImage*)capture:(CGRect)rect;
 
 @end
 
@@ -35,6 +35,6 @@
 
 - (UIImage*)fixOrientation;
 
--(UIImage*)cropImage:(UIEdgeInsets)insets;
+-(UIImage*)cropImage:(CGRect)rect;
 
 @end

@@ -24,10 +24,10 @@
     return img;
 }
 //////////////////////////////////////////////////////////////////
--(UIImage*)capture:(UIEdgeInsets)insets
+-(UIImage*)capture:(CGRect)rect
 {
     UIImage* img = [self capture];
-    return [img cropImage:insets];
+    return [img cropImage:rect];
 }
 //////////////////////////////////////////////////////////////////
 
@@ -37,13 +37,21 @@
 @implementation UIImage (BaseImage)
 
 //////////////////////////////////////////////////////////////////
--(UIImage*)cropImage:(UIEdgeInsets)insets
+-(UIImage*)cropImage:(CGRect)rect
 {
-    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0); //self.opaque
-    [self drawInRect:CGRectMake(-insets.left, -insets.top, self.size.width+insets.right+insets.left, self.size.height+insets.top+insets.bottom)];
+    
+    CGRect cropRect = CGRectMake(rect.origin.x*self.scale, rect.origin.y*self.scale, rect.size.width*self.scale, rect.size.height*self.scale);
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], cropRect);
+    UIImage *img = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return img;
+    /*UIGraphicsBeginImageContextWithOptions(CGSizeMake(rect.size.width, rect.size.height), NO, 0.0); //self.opaque
+    //UIRectClip(rect);
+    [self drawInRect:CGRectMake(-rect.origin.x, -rect.origin.y, rect.size.width, rect.size.height+rect.origin.y)];
     UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    return img;
+    return img;*/
 }
 //////////////////////////////////////////////////////////////////
 //round rect images.
