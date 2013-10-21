@@ -1,6 +1,10 @@
 # UICustomizeKit #
 
-The UICustomizeKit extends standard UIKit components to make amazing looking controls. I saw that there was a lot of good UI kits cropping up for iOS, but none of them had a full implementation of controls or where/are easy to customize outside of the theme's scope. The goal of UICustomizeKit is to allow you to customize all controls easily, to create a great style with minimal effort. A Flat and Bootstrap control kits are currently provided. (and hopefully you will contribute and add more!)
+The UICustomizeKit extends standard UIKit components to make amazing looking controls. I saw that there was a lot of good UI kits cropping up for iOS, but none of them had a full implementation of controls or where/are easy to customize outside of the theme's scope. The goal of UICustomizeKit is to allow you to customize all controls easily, to create a great style with minimal effort. A Flat and Bootstrap control kits are currently provided (and hopefully you will contribute and add more!). Those repos can be found here:
+
+https://github.com/daltoniam/FlatUIKit
+
+https://github.com/daltoniam/BootstrapUIKit
 
 # Dependancies #
 
@@ -8,7 +12,7 @@ Requires CoreGraphics framework, quartz framework.
 
 # Examples #
 
-	//Dalton you, need to add some! With some pictures too!
+	Dalton you, need to add some! With some pictures too!
 	
 # Requirements #
 
