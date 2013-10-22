@@ -6,7 +6,7 @@ https://github.com/daltoniam/FlatUIKit
 
 https://github.com/daltoniam/BootstrapUIKit
 
-# Dependancies #
+# Dependencies #
 
 Requires CoreGraphics framework, quartz framework. 
 
