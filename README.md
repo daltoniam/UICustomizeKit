@@ -57,7 +57,7 @@ Requires CoreGraphics framework, quartz framework.
 }
 ```
 
-picture here.
+![alt tag](https://raw.github.com/daltoniam/UICustomizeKit/images/button.png)
 
 **ProgressView Example:**
 
@@ -88,7 +88,7 @@ picture here.
 }
 ```
 
-picture here.
+![alt tag](https://raw.github.com/daltoniam/UICustomizeKit/images/progressView.png)
 
 **Slider Example:**
 
@@ -118,7 +118,7 @@ picture here.
 }
 ```
 
-picture here.
+![alt tag](https://raw.github.com/daltoniam/UICustomizeKit/images/sliderView.png)
 
 **Switch Example:**
 
@@ -138,7 +138,8 @@ picture here.
 
 }
 ```
-picture here.
+
+![alt tag](https://raw.github.com/daltoniam/UICustomizeKit/images/switch.png)
 
 **TextField Example:**
 
@@ -160,7 +161,7 @@ picture here.
 }
 ```
 
-picture here.
+![alt tag](https://raw.github.com/daltoniam/UICustomizeKit/images/textField.png)
 
 **TextView Example:**
 
@@ -181,7 +182,7 @@ picture here.
 }
 ```
 
-picture here.
+![alt tag](https://raw.github.com/daltoniam/UICustomizeKit/images/textView.png)
 
 # Requirements #
 
