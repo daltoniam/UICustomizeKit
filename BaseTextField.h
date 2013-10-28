@@ -10,44 +10,82 @@
 #import <UIKit/UIKit.h>
 #import "BaseText.h"
 
+/**
+ BaseTextField is a subclass of UITextField. It provides several different customizations to the default styling of UITextField. Properties annotated as Required have to be set.
+ */
 @interface BaseTextField : UITextField
 
--(void)updateState:(textState)state;
+///-------------------------------
+/// @name Style Customizations
+///-------------------------------
 
-//the amount to round the corners
+/**
+ Set the amount to round the corners.
+ */
 @property(nonatomic,assign)CGFloat rounding;
 
-//the width of the border
+/**
+ Set the width of the border.
+ */
 @property(nonatomic,assign)CGFloat borderWidth;
 
-//default textColor
+/**
+ Set default text color.
+ */
 @property(nonatomic,strong) UIColor *mainTextColor;
 
-//border color of view
+/**
+ Set border color of view.
+ */
 @property(nonatomic,strong) UIColor *borderColor;
 
-//body color of view
+/**
+ Set thebody color of view.
+ */
 @property(nonatomic,strong) UIColor *bodyColor;
 
-//selected textColor
+/**
+ Set the selected text color.
+ */
 @property(nonatomic,strong) UIColor *selectedTextColor;
 
-//border color of view in selected state
+/**
+ Set the border color of view in selected state.
+ */
 @property(nonatomic,strong) UIColor *selectedBorderColor;
 
-//body color of view in selected state
+/**
+ Set the body color of view in selected state.
+ */
 @property(nonatomic,strong) UIColor *selectedBodyColor;
 
-//disabled textColor
+/**
+ Set the disabled text color.
+ */
 @property(nonatomic,strong) UIColor *disabledTextColor;
 
-//border color of view in disabled state
+/**
+ Set the border color of view in disabled state.
+ */
 @property(nonatomic,strong) UIColor *disabledBorderColor;
 
-//body color of view in disabled state
+/**
+ Set the body color of view in disabled state.
+ */
 @property(nonatomic,strong) UIColor *disabledBodyColor;
 
-//add inner padding for the text field
+/**
+ Add inner padding for the text field.
+ */
 @property(nonatomic,assign)CGFloat padding;
+
+///-------------------------------
+/// @name Methods
+///-------------------------------
+
+/**
+ Update the state of the text field. Whether it is disabled, selected, etc.
+ */
+-(void)updateState:(textState)state;
 
 @end

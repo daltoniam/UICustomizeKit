@@ -7,8 +7,8 @@
 //
 //////////////////////////////////////////////////////////////////
 
-#ifndef MyBigCampus_BaseText_h
-#define MyBigCampus_BaseText_h
+#ifndef BaseText_h
+#define BaseText_h
 
 typedef enum {
     textStateNormal = 0,

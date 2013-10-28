@@ -10,8 +10,23 @@
 #import "BaseProgressView.h"
 #import "UIColor+BaseColor.h"
 
+@interface BaseProgressView()
+
+@property (nonatomic)float animateProgress;
+
+@end
+
 @implementation BaseProgressView
 
+//////////////////////////////////////////////////////////////////
+-(instancetype)init
+{
+    if(self = [super init])
+    {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
 //////////////////////////////////////////////////////////////////
 - (void)drawRect:(CGRect)rect
 {
@@ -47,7 +62,7 @@
     NSMutableArray* newGradientColors = [NSMutableArray arrayWithCapacity:self.trackColors.count];
     for(UIColor* color in self.trackColors)
         [newGradientColors addObject:(id)color.CGColor];
-    CGFloat* newGradientLocations = self.trackRange;//{0.0,0.12, 1.0};
+    CGFloat* newGradientLocations = self.trackRange;
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)newGradientColors, newGradientLocations);
@@ -58,7 +73,7 @@
     
     //draw the fill
     CGContextSaveGState(ctx);
-    float current = animateProgress;
+    float current = self.animateProgress;
     if(current <= -1)
         current = self.progress;
     CGRect tintFrame = frame;
@@ -86,12 +101,12 @@
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
     CGContextRestoreGState(ctx);
-    if(animateProgress > -1 && (animateProgress+0.01 < self.progress || animateProgress-0.01 > self.progress) )
+    if(self.animateProgress > -1 && (self.animateProgress+0.01 < self.progress || self.animateProgress-0.01 > self.progress) )
     {
-        if(animateProgress < self.progress)
-            animateProgress += 0.01;
+        if(self.animateProgress < self.progress)
+            self.animateProgress += 0.01;
         else
-            animateProgress -= 0.01;
+            self.animateProgress -= 0.01;
         [self performSelector:@selector(reloadView) withObject:nil afterDelay:0.01];
     }
     
@@ -103,7 +118,7 @@
         pro = 1;
     if(pro < 0)
         pro = 0;
-    animateProgress = -1;
+    self.animateProgress = -1;
     _progress = floor(pro * 100) / 100;
     [self setNeedsDisplay];
 }
@@ -115,9 +130,9 @@
     if(pro < 0)
         pro = 0;
     if(animated)
-        animateProgress = self.progress;
+        self.animateProgress = self.progress;
     else
-        animateProgress = -1;
+        self.animateProgress = -1;
     _progress = floor(pro * 100) / 100;
     [self setNeedsDisplay];
 }

@@ -9,30 +9,53 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ BaseSlider is a subclass of UISlider. It provides several different customizations to the default styling of UISlider. Properties annotated as Required have to be set.
+ */
 @interface BaseSlider : UISlider
 
-//the color of the fill part of the slider
+///-------------------------------
+/// @name Style Customizations
+///-------------------------------
+
+/**
+ Set the fill color part of the slider. Required.
+ */
 @property(nonatomic,strong)NSArray* colors;
 
-//the float fill gradient of the fill part of the slider
+/**
+ Set the fill gradient. Required even if only one color is set. Required.
+ */
 @property(nonatomic,assign)CGFloat* colorRange;
 
-//your background/track color
+/**
+ Set the background/track color. Required.
+ */
 @property(nonatomic,strong)NSArray* trackColors;
 
-//the float background/track gradient
+/**
+ Set the background/track gradient. Reequired even if only one color is set. Required.
+ */
 @property(nonatomic,assign)CGFloat* trackRange;
 
-//the thumb colors
+/**
+ Set the thumb colors. (The actual circle control)
+ */
 @property(nonatomic,strong)NSArray* thumbColors;
 
-//the float fill gradient of the thumb
+/**
+ Set the fill gradient of the thumb.
+ */
 @property(nonatomic,assign)CGFloat* thumbRange;
 
-//the selected thumb colors
+/**
+ Set the selected thumb colors.
+ */
 @property(nonatomic,strong)NSArray* thumbSelectedColors;
 
-//the selected float fill gradient of the thumb
+/**
+ Set the selected float fill gradient of the thumb.
+ */
 @property(nonatomic,assign)CGFloat* thumbSelectedRange;
 
 @end

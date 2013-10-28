@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////
 //
 //  BaseProgressView.h
-//  iOSTester
+//  
 //
 //  Created by Dalton Cherry on 5/28/13.
 //  Copyright (c) 2013 basement Krew. All rights reserved.
@@ -10,41 +10,73 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ BaseProgressView provides a simple way to create a progress view like one seen in Twitter bootstrap. Properties annotated as Required have to be set.
+ */
 @interface BaseProgressView : UIView
-{
-    float animateProgress;
-}
-//frees the CGFloat arrays
--(void)cleanup;
 
-//your normal fill color
-@property(nonatomic,strong)NSArray* colors;
+///-------------------------------
+/// @name Style Customizations
+///-------------------------------
 
-//the float fill gradient
-@property(nonatomic,assign)CGFloat* colorRange;
+/**
+ Set the normal fill color. Required.
+ */
+@property(nonatomic,strong)NSArray *colors;
 
-//your background/track color
-@property(nonatomic,strong)NSArray* trackColors;
+/**
+ Set the fill gradient. Required. Still required even if only one color is set.
+ */
+@property(nonatomic,assign)CGFloat *colorRange;
 
-//the float background/track gradient
-@property(nonatomic,assign)CGFloat* trackRange;
+/**
+ Set the background/track color. Required.
+ */
+@property(nonatomic,strong)NSArray *trackColors;
 
-//the width of the border
+/**
+ Set the background/track gradient. Required. Still required even if only one color is set.
+ */
+@property(nonatomic,assign)CGFloat *trackRange;
+
+/**
+ Set the width of the border.
+ */
 @property(nonatomic,assign)CGFloat borderWidth;
 
-//the width of the border
-@property(nonatomic,strong)UIColor* borderColor;
+/**
+ Set the color of the border.
+ */
+@property(nonatomic,strong)UIColor *borderColor;
 
-//the amount to round the corners
+/**
+ Set the amount to round the corners.
+ Need to set which corners to round with the corners property for this to take effect.
+ */
 @property(nonatomic,assign)CGFloat rounding;
 
-//the corners to round
+/**
+ Set which corners to round. The rounding property sets how much.
+ */
 @property(nonatomic,assign)UIRectCorner corners;
 
-//the progress of the bar
+/**
+ Set the progress of the progress bar. Just like UIProgressView it is the values between 0 and 1.
+ */
 @property(nonatomic,assign)CGFloat progress;
 
-//set the progress bar with animation
+/**
+ Set the progress of the progress bar with animation. Just like UIProgressView it is the values between 0 and 1.
+ */
 -(void)setProgress:(CGFloat)pro animated:(BOOL)animated;
+
+///-------------------------------
+/// @name Clean up Routines
+///-------------------------------
+
+/**
+ Frees the CGFloat arrays. You should not need to call this, BaseProgressView should take care of the cleanup for you.
+ */
+-(void)cleanup;
 
 @end

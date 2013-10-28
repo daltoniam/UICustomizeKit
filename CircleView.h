@@ -9,19 +9,51 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Provides a circual view for your enjoyment. Properties annotated as Required have to be set.
+ */
 @interface CircleView : UIView
 
-//your normal fill color
+///-------------------------------
+/// @name Style Customizations
+///-------------------------------
+
+/**
+ Set the normal fill color. Required.
+ */
 @property(nonatomic,strong)NSArray* colors;
 
-//the float filll gradient
+/**
+ Set the filll gradient. Required.
+ */
 @property(nonatomic,assign)CGFloat* colorRange;
 
-//add some padding around the circle so it does not fill the whole view
+/**
+ Add some padding around the circle so it does not fill the whole view.
+ */
 @property(nonatomic,assign)CGFloat padding;
 
-//factory methods
+///-------------------------------
+/// @name factory methods
+///-------------------------------
+
+/**
+ Returns an instance of a CircleView with provided color.
+ 
+ @param Color of circle.
+ 
+ @return Instance of CircleView.
+ */
 +(CircleView*)circleWithColor:(UIColor*)color;
+
+/**
+ Returns an instance of a CircleView with provided colors.
+ 
+ @param Color of circle.
+ @param Range for fill gradient.
+ 
+ @return Instance of CircleView.
+ */
 +(CircleView*)circleWithColors:(NSArray*)colors ranges:(CGFloat*)ranges;
 
 @end

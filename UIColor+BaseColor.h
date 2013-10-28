@@ -13,14 +13,24 @@
 
 @end
 
-
+/**
+ Provides category methods for UIColor.
+ */
 @interface UIColor (BaseColor)
 
-//adjust the color by a point value (up or down)
+///-------------------------------
+/// @name Category Methods.
+///-------------------------------
+
+/**
+ Adjust the color by a point value (up or down)
+ */
 -(UIColor*)adjustColor:(CGFloat)point;
 
+///-------------------------------
+/// @name Extra Colors!
+///-------------------------------
 
-//extra colors!
 +(UIColor*)turquoiseColor;
 +(UIColor*)greenSeaColor;
 +(UIColor*)emerlandColor;

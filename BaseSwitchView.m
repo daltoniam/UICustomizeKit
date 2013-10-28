@@ -149,7 +149,7 @@
     if(state)
         point = CGPointMake(0, 0);
     [scrollView setContentOffset:point animated:animated];
-    self.on = state;
+    on = state; // accessed directly so property is readonly.
     [self switchStateChanged];
 }
 //////////////////////////////////////////////////////////////////

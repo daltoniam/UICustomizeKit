@@ -9,28 +9,69 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Provides a Round Rectangle view for your enjoyment. Properties annotated as Required have to be set.
+ */
 @interface RoundRectView : UIView
 
-//your normal fill color
+///-------------------------------
+/// @name Style Customizations
+///-------------------------------
+
+/**
+ Set the normal fill color. Required.
+ */
 @property(nonatomic,strong)NSArray* colors;
 
-//the float filll gradient
+/**
+ Set the filll gradient. Required.
+ */
 @property(nonatomic,assign)CGFloat* colorRange;
 
-//the amount to round the corners
+/**
+ Set the amount to round the corners.
+ Need to set which corners to round with the corners property for this to take effect.
+ */
 @property(nonatomic,assign)CGFloat rounding;
 
-//the amount to round the corners
+/**
+ Set which corners to round. The rounding property sets how much.
+ */
 @property(nonatomic,assign)UIRectCorner corners;
 
-//the width of the border
+/**
+ Set the width of the border.
+ */
 @property(nonatomic,assign)CGFloat borderWidth;
 
-//the width of the border
+/**
+ Set the color of the border.
+ */
 @property(nonatomic,strong)UIColor* borderColor;
 
-//factory methods
+///-------------------------------
+/// @name factory methods
+///-------------------------------
+
+/**
+ Returns an instance of a RoundRectView with provided color.
+ 
+ @param Color of the Rectangle.
+ @param Rounding of the Rectangle.
+ 
+ @return Instance of RoundRectView.
+ */
 +(RoundRectView*)roundRectWithColor:(UIColor*)color rounding:(int)rounding;
+
+/**
+ Returns an instance of a RoundRectView with provided colors.
+ 
+ @param Color of the Rectangle.
+ @param Range for fill gradient.
+ @param Rounding of the Rectangle.
+ 
+ @return Instance of RoundRectView.
+ */
 +(RoundRectView*)roundRectWithColors:(NSArray*)colors ranges:(CGFloat*)ranges rounding:(int)rounding;
 
 @end
