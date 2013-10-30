@@ -24,6 +24,7 @@
     if(self = [super init])
     {
         self.backgroundColor = [UIColor clearColor];
+        self.animateProgress = -1;
     }
     return self;
 }
