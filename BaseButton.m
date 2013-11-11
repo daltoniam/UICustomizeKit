@@ -16,6 +16,7 @@
 -(void)commonInit
 {
     self.backgroundColor = [UIColor clearColor];
+    self.isBackButton = NO;
 }
 //////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame
