@@ -88,11 +88,16 @@
     [scrollView setContentOffset:point animated:NO];
 }
 //////////////////////////////////////////////////////////////////
+- (void)scrollViewDidScroll:(UIScrollView *)view
+{
+    [view setContentOffset:CGPointMake(view.contentOffset.x, 0)];
+}
+//////////////////////////////////////////////////////////////////
 -(UIView*)onViewSetup
 {
     UILabel* label = [[UILabel alloc] init];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"ON";
+    label.text = NSLocalizedString(@"ON",nil);
     label.font = [UIFont boldSystemFontOfSize:12];
     label.textAlignment = NSTextAlignmentCenter;
     return label;
@@ -109,7 +114,7 @@
 {
     UILabel* label = [[UILabel alloc] init];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"OFF";
+    label.text = NSLocalizedString(@"OFF",nil);
     label.font = [UIFont boldSystemFontOfSize:12];
     label.textAlignment = NSTextAlignmentCenter;
     return label;
