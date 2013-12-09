@@ -224,6 +224,7 @@ Open your project in Xcode from the .xcworkspace file (not the usual project fil
 
 ### Current Controls: ###
 +	ProgressView
++	RadialProgressView
 +	Button
 +	TabBar
 +	BarButton
@@ -232,12 +233,12 @@ Open your project in Xcode from the .xcworkspace file (not the usual project fil
 +	TextView
 +	SwitchView
 +	SliderView
++	Loading/progress dialog (more like UIActivityView)
 
 ### TODOs: ###
 +	add AlertView
 +	add statusView (statusBar)
 +	port FontAwesome (and add any other great/open source fonts!)
-+	add loading/progress dialog (more like UIActivityView)
 +	add a searchBar view
 +	maybe an actionsheet?
 +	possible port/add DCDataViews? (not sure if that fits in this scope)

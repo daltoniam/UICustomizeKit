@@ -11,28 +11,29 @@
 @interface BaseActivityView : UIView
 
 /**
- Set the width of the border.
+ Set the width of the slices.
  */
-@property(nonatomic,assign)CGFloat borderWidth;
+@property(nonatomic,assign)CGFloat sliceWidth;
 
 /**
- Set the color of the border.
+ Set an array of UIColors you want to cycle through
  */
-@property(nonatomic,strong)UIColor *borderColor;
+@property(nonatomic,strong)NSArray *colorArray;
 
 /**
- Set which direction the loading moves is.
+ Check if the view is currently animating
  */
-@property(nonatomic,assign)BOOL isClockWise;
+@property(nonatomic,assign,readonly)BOOL isAnimating;
 
 /**
- Set the progress of the progress bar. Just like UIProgressView it is the values between 0 and 1.
+ Set if the view is loading state
  */
-@property(nonatomic,assign)CGFloat progress;
+-(void)startAnimating;
 
 /**
- Set the progress of the progress bar with animation. Just like UIProgressView it is the values between 0 and 1.
+ Set if the view is not loading state
  */
--(void)setProgress:(CGFloat)pro animated:(BOOL)animated;
+-(void)stopAnimating;
+
 
 @end

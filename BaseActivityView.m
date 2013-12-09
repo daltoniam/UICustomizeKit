@@ -14,6 +14,10 @@
 
 @property (nonatomic)float animateProgress;
 
+@property (nonatomic,assign)int currentIndex;
+
+@property(nonatomic,assign)int sliceIndex;
+
 @end
 
 @implementation BaseActivityView
@@ -27,77 +31,99 @@
     if (self)
     {
         [self commonInit];
+        if(frame.size.width > 0)
+            self.sliceWidth = frame.size.width/4;
     }
     return self;
 }
 //////////////////////////////////////////////////////////////////
 -(void)commonInit
 {
-    self.borderColor = [UIColor blackColor];
-    self.borderWidth = 2;
+    self.sliceWidth = 12;
     self.backgroundColor = [UIColor clearColor];
-    self.isClockWise = YES; //TODO: need to swap the caculation of the curve when counter clockwise...
+    self.currentIndex = 0;
+    self.colorArray = @[[UIColor colorWithWhite:0.8 alpha:1],[UIColor colorWithWhite:0.4 alpha:1],[UIColor colorWithWhite:0.2 alpha:1]];
 }
 //////////////////////////////////////////////////////////////////
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGRect frame = CGRectMake(0, 0, floorf(self.frame.size.width), floorf(self.frame.size.height));
     
-    float current = self.animateProgress;
-    if(current <= -1)
-        current = self.progress;
-    
-    CGContextSaveGState(ctx);
     CGFloat start = DEGREES_TO_RADIANS(270);
-    CGFloat end = DEGREES_TO_RADIANS(current*360) + start;
-    CGPathRef path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(frame.size.width/2, frame.size.height/2)
-                                                         radius:floorf(self.frame.size.width/2 - self.borderWidth/2)
-                                                     startAngle:start
-                                                       endAngle:end
-                                                      clockwise:self.isClockWise].CGPath;
+    //current = 1.0f;
+    CGFloat end = DEGREES_TO_RADIANS(360) + start;
+    CGFloat step = DEGREES_TO_RADIANS(30);
+    CGFloat walk = start+step;
+    CGFloat pad = DEGREES_TO_RADIANS(5);
+    walk -= pad;
+    UIColor *color = [self nextColor];
+    int i = 0;
+    while(walk < end)
+    {
+        [self drawSlice:ctx start:start end:walk color:color];
+        start = walk + pad;
+        walk += step;
+        if(i >= self.sliceIndex)
+            color = [self currentColor];
+        i++;
+    }
     
-    CGContextSetStrokeColorWithColor(ctx, self.borderColor.CGColor);
-    CGContextSetLineWidth(ctx, self.borderWidth);
+    if(self.isAnimating)
+    {
+        if(self.sliceIndex >= i)
+        {
+            self.sliceIndex = 0;
+            self.currentIndex++;
+            if(self.currentIndex >= self.colorArray.count)
+                self.currentIndex = 0;
+        }
+        else
+            self.sliceIndex++;
+        
+        [self performSelector:@selector(reloadView) withObject:nil afterDelay:0.08];
+    }
+}
+//////////////////////////////////////////////////////////////////
+-(void)drawSlice:(CGContextRef)ctx start:(CGFloat)start end:(CGFloat)end color:(UIColor*)color
+{
+    CGContextSaveGState(ctx);
+    CGPathRef path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
+                                                    radius:floorf(self.frame.size.width/2 - self.sliceWidth/2)
+                                                startAngle:start
+                                                  endAngle:end
+                                                 clockwise:YES].CGPath;
+    
+    CGContextSetStrokeColorWithColor(ctx, color.CGColor);
+    CGContextSetLineWidth(ctx, self.sliceWidth);
     CGContextSetLineJoin(ctx, kCGLineJoinRound);
     CGContextAddPath(ctx, path);
     
     CGContextStrokePath(ctx);
     CGContextRestoreGState(ctx);
+}
+//////////////////////////////////////////////////////////////////
+-(UIColor*)currentColor
+{
+    return self.colorArray[self.currentIndex];
+}
+//////////////////////////////////////////////////////////////////
+-(UIColor*)nextColor
+{
+    int next = self.currentIndex+1;
+    if(next >= self.colorArray.count)
+        next = 0;
     
-    if(self.animateProgress > -1 && (self.animateProgress+0.01 < self.progress || self.animateProgress-0.01 > self.progress) )
-    {
-        if(self.animateProgress < self.progress)
-            self.animateProgress += 0.01;
-        else
-            self.animateProgress -= 0.01;
-        [self performSelector:@selector(reloadView) withObject:nil afterDelay:0.01];
-    }
+    return self.colorArray[next];
 }
 //////////////////////////////////////////////////////////////////
--(void)setProgress:(CGFloat)pro
+-(void)startAnimating
 {
-    if(pro > 1)
-        pro = 1;
-    if(pro < 0)
-        pro = 0;
-    self.animateProgress = -1;
-    _progress = floor(pro * 100) / 100;
-    [self setNeedsDisplay];
+    _isAnimating = YES;
 }
 //////////////////////////////////////////////////////////////////
--(void)setProgress:(CGFloat)pro animated:(BOOL)animated
+-(void)stopAnimating
 {
-    if(pro > 1)
-        pro = 1;
-    if(pro < 0)
-        pro = 0;
-    if(animated)
-        self.animateProgress = self.progress;
-    else
-        self.animateProgress = -1;
-    _progress = floor(pro * 100) / 100;
-    [self setNeedsDisplay];
+    _isAnimating = NO;
 }
 //////////////////////////////////////////////////////////////////
 -(void)reloadView
