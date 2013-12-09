@@ -9,6 +9,7 @@
 
 #import "BaseActivityView.h"
 #import <math.h>
+#import "UIColor+BaseColor.h"
 
 @interface BaseActivityView ()
 
@@ -17,6 +18,10 @@
 @property (nonatomic,assign)int currentIndex;
 
 @property(nonatomic,assign)int sliceIndex;
+
+@property(nonatomic,assign)int totalSlices;
+
+@property(nonatomic,strong)NSArray *colorArray;
 
 @end
 
@@ -39,10 +44,13 @@
 //////////////////////////////////////////////////////////////////
 -(void)commonInit
 {
+    self.shouldLightenSlices = NO;
+    self.sliceIndex = 0;
     self.sliceWidth = 12;
     self.backgroundColor = [UIColor clearColor];
     self.currentIndex = 0;
-    self.colorArray = @[[UIColor colorWithWhite:0.8 alpha:1],[UIColor colorWithWhite:0.4 alpha:1],[UIColor colorWithWhite:0.2 alpha:1]];
+    self.trackColor = [UIColor colorWithWhite:0.9 alpha:1];
+    self.sliceColor = [UIColor grayColor];
 }
 //////////////////////////////////////////////////////////////////
 - (void)drawRect:(CGRect)rect
@@ -56,31 +64,58 @@
     CGFloat walk = start+step;
     CGFloat pad = DEGREES_TO_RADIANS(5);
     walk -= pad;
-    UIColor *color = [self nextColor];
+    UIColor *color = self.trackColor;
     int i = 0;
+    int count = 0;
+    int thresh = 4;
+    if(self.totalSlices > 0 && self.sliceIndex == self.totalSlices)
+        self.sliceIndex = 0;
     while(walk < end)
     {
-        [self drawSlice:ctx start:start end:walk color:color];
+        UIColor *localColor = color;
+        if(self.sliceIndex+thresh >= self.totalSlices && self.totalSlices > 0)
+        {
+            int k = (self.sliceIndex+thresh) - self.totalSlices;
+            k -= i;
+            if(self.sliceIndex == self.totalSlices)
+                k -= 1;
+            if(k >= 0)
+            {
+                if(self.shouldLightenSlices)
+                    localColor = self.colorArray[(thresh-1)-k];
+                else
+                    localColor = self.sliceColor;
+            }
+        }
+        
+        [self drawSlice:ctx start:start end:walk color:localColor];
         start = walk + pad;
         walk += step;
         if(i >= self.sliceIndex)
-            color = [self currentColor];
+        {
+            if(count >= thresh)
+                color = self.trackColor;
+            else if(self.shouldLightenSlices)
+                color = self.colorArray[count];
+            else
+                color = self.sliceColor;
+            count++;
+        }
         i++;
     }
+    if(self.totalSlices == 0)
+        self.totalSlices = i;
     
     if(self.isAnimating)
     {
         if(self.sliceIndex >= i)
         {
             self.sliceIndex = 0;
-            self.currentIndex++;
-            if(self.currentIndex >= self.colorArray.count)
-                self.currentIndex = 0;
         }
         else
             self.sliceIndex++;
         
-        [self performSelector:@selector(reloadView) withObject:nil afterDelay:0.08];
+        [self performSelector:@selector(reloadView) withObject:nil afterDelay:0.1]; //08
     }
 }
 //////////////////////////////////////////////////////////////////
@@ -102,18 +137,11 @@
     CGContextRestoreGState(ctx);
 }
 //////////////////////////////////////////////////////////////////
--(UIColor*)currentColor
+-(void)setSliceColor:(UIColor *)sliceColor
 {
-    return self.colorArray[self.currentIndex];
-}
-//////////////////////////////////////////////////////////////////
--(UIColor*)nextColor
-{
-    int next = self.currentIndex+1;
-    if(next >= self.colorArray.count)
-        next = 0;
-    
-    return self.colorArray[next];
+    _sliceColor = sliceColor;
+    if(self.shouldLightenSlices)
+        self.colorArray = @[[sliceColor adjustColor:0.3],[sliceColor adjustColor:0.2],[sliceColor adjustColor:0.1],sliceColor];
 }
 //////////////////////////////////////////////////////////////////
 -(void)startAnimating

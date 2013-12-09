@@ -16,9 +16,19 @@
 @property(nonatomic,assign)CGFloat sliceWidth;
 
 /**
- Set an array of UIColors you want to cycle through
+ Set loading color.
  */
-@property(nonatomic,strong)NSArray *colorArray;
+@property(nonatomic,strong)UIColor *sliceColor;
+
+/**
+ Set loading color.
+ */
+@property(nonatomic,strong)UIColor *trackColor;
+
+/**
+ Lighten the sliceColor for each segment. Default is no.
+ */
+@property(nonatomic,assign)BOOL shouldLightenSlices;
 
 /**
  Check if the view is currently animating

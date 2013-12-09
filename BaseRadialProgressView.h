@@ -21,6 +21,11 @@
 @property(nonatomic,strong)UIColor *borderColor;
 
 /**
+ Set the color of the track color.
+ */
+@property(nonatomic,strong)UIColor *trackColor;
+
+/**
  Set which direction the loading moves is.
  */
 @property(nonatomic,assign)BOOL isClockWise;

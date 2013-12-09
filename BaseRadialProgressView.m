@@ -49,6 +49,15 @@
         current = -current;
     
     CGFloat start = DEGREES_TO_RADIANS(270);
+    if(self.trackColor)
+    {
+        CGFloat trackEnd = DEGREES_TO_RADIANS(360);
+        if(!self.isClockWise)
+            trackEnd = DEGREES_TO_RADIANS(-360);
+        trackEnd += start;
+        [self drawSlice:ctx start:start end:trackEnd color:self.trackColor];
+    }
+    
     CGFloat end = DEGREES_TO_RADIANS(current*360) + start;
     [self drawSlice:ctx start:start end:end color:self.borderColor];
     
