@@ -20,8 +20,8 @@ Requires CoreGraphics framework, quartz framework.
     [super viewDidLoad];
 
     // silly button example, to show off every property in BaseButton.
-    NSArray *colors = @[[UIColor blackColor], [UIColor blueColor]];
-    CGRect rect = { .origin.x = 20.0, .origin.y = 20.0, .size.width = 44.0, .size.height = 44.0 };
+    NSArray *colors = @[[UIColor colorWithWhite:0.9 alpha:1], [UIColor colorWithWhite:0.7 alpha:1]];
+    CGRect rect = { .origin.x = 20.0, .origin.y = 70.0, .size.width = 44.0, .size.height = 24.0 };
     BaseButton *button = [[BaseButton alloc] initWithFrame:rect];
     button.colors = colors;
     CGFloat *colorLocs = (CGFloat*)malloc(sizeof(CGFloat) * 2);
@@ -32,12 +32,12 @@ Requires CoreGraphics framework, quartz framework.
     button.selectedRange = colorLocs;
     button.disabledColors = @[[UIColor lightGrayColor]];
     button.borderWidth = 1.0f;
-    button.borderColor = [UIColor redColor];
+    button.borderColor = [UIColor colorWithWhite:0.7 alpha:1];
     button.isBackButton = YES;
     button.corners = 5.0;
-
+    
     // a more modern button.
-    CGRect rect2 = { .origin.x = 20.0, .origin.y = 80.0, .size.width = 132.0, .size.height = 44.0 };
+    CGRect rect2 = { .origin.x = 20.0, .origin.y = 110.0, .size.width = 132.0, .size.height = 44.0 };
     BaseButton *modernButton = [[BaseButton alloc] initWithFrame:rect2];
     modernButton.colors = @[[UIColor colorWithRed:72.0f/255 green:153.0f/255 blue:251.0f/255 alpha:1]];
     modernButton.selectedColors = @[[UIColor blueColor]];
@@ -50,8 +50,8 @@ Requires CoreGraphics framework, quartz framework.
     colorLocs[0] = 0.0f;
     colorLocs[1] = 1.0f;
     modernButton.colorRange = range;
-
-
+    
+    
     [self.view addSubview:button];
     [self.view addSubview:modernButton];
 }
@@ -78,7 +78,7 @@ Requires CoreGraphics framework, quartz framework.
     progressView.trackColors = @[[UIColor lightGrayColor]];
     progressView.trackRange = colorLocs;
     progressView.borderWidth = 1;
-    progressView.borderColor = [UIColor blackColor];
+    progressView.borderColor = [UIColor colorWithWhite:0.4 alpha:1];
     progressView.rounding = 8;
     progressView.corners = UIRectCornerAllCorners;
     [progressView setProgress:0.75 animated:YES];
@@ -98,7 +98,7 @@ Requires CoreGraphics framework, quartz framework.
     [super viewDidLoad];
 
     //slider example
-    NSArray *colors = @[[UIColor colorWithRed:72.0f/255 green:153.0f/255 blue:251.0f/255 alpha:1]];
+    NSArray *colors = @[[UIColor redColor]];
     CGRect rect = { .origin.x = 20.0, .origin.y = 80.0, .size.width = 182.0, .size.height = 44.0 };
     BaseSlider *slider = [[BaseSlider alloc] initWithFrame:rect];
     slider.colors = colors;
@@ -106,13 +106,13 @@ Requires CoreGraphics framework, quartz framework.
     colorLocs[0] = 0.0f;
     colorLocs[1] = 1.0f;
     slider.colorRange = colorLocs;
-    slider.trackColors = @[[UIColor redColor]];
+    slider.trackColors = @[[UIColor lightGrayColor]];
     slider.trackRange = colorLocs;
-    slider.thumbColors = @[[UIColor lightGrayColor]];
+    slider.thumbColors = @[[UIColor blackColor]];
     slider.thumbRange = colorLocs;
     slider.thumbSelectedColors = @[[UIColor yellowColor]];
     slider.thumbSelectedRange = colorLocs;
-
+    
     [self.view addSubview:slider];
 
 }
@@ -132,9 +132,12 @@ Requires CoreGraphics framework, quartz framework.
     BaseSwitchView *sw = [[BaseSwitchView alloc] initWithFrame:rect];
     sw.onText = @"Yes";
     sw.offText = @"No";
+    sw.backgroundColor = [UIColor lightGrayColor];
+    sw.onBackgroundColor = [UIColor blackColor];
+    sw.onColor = [UIColor blackColor];
+    sw.offBackgroundColor = [UIColor redColor];
+    sw.offColor = [UIColor redColor];
     [sw setOn:YES animated:NO];
-
-    [self.view addSubview:sw];
 
 }
 ```
@@ -148,15 +151,13 @@ Requires CoreGraphics framework, quartz framework.
 {
     [super viewDidLoad];
 
-     //textfield example
-     CGRect rect = { .origin.x = 20.0, .origin.y = 80.0, .size.width = 182.0, .size.height = 44.0 };
-     BaseTextField *textField = [[BaseTextField alloc] initWithFrame:rect];
-     textField.borderWidth = 1;
-     textField.mainTextColor = [UIColor blueColor];
-     textField.borderColor = [UIColor blackColor];
-     textField.bodyColor = [UIColor lightGrayColor];
-
-     [self.view addSubview:textField];
+    //textfield example
+    CGRect rect = { .origin.x = 20.0, .origin.y = 80.0, .size.width = 182.0, .size.height = 44.0 };
+    BaseTextField *textField = [[BaseTextField alloc] initWithFrame:rect];
+    textField.borderWidth = 1;
+    textField.mainTextColor = [UIColor redColor];
+    textField.borderColor = [UIColor colorWithWhite:0.8 alpha:1];
+    textField.bodyColor = [UIColor colorWithWhite:0.9 alpha:1];
 
 }
 ```
@@ -175,14 +176,51 @@ Requires CoreGraphics framework, quartz framework.
     BaseTextView *textView = [[BaseTextView alloc] initWithFrame:rect];
     textView.mainTextColor = [UIColor redColor];
     textView.borderWidth = 1;
-    textView.borderColor = [UIColor lightGrayColor];
-
+    textView.borderColor = [UIColor colorWithWhite:0.9 alpha:1];
+    
     [self.view addSubview:textView];
-
 }
 ```
 
 ![alt tag](https://raw.github.com/daltoniam/UICustomizeKit/images/textView.png)
+
+**RadialProgressView Example:**
+
+```objc
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    //radial progress view example
+    CGRect rect = { .origin.x = 20.0, .origin.y = 80.0, .size.width = 40, .size.height = 40 };
+    BaseRadialProgressView *view = [[BaseRadialProgressView alloc] initWithFrame:rect];
+    view.borderColor = [UIColor greenColor];
+    [view setProgress:0.8 animated:YES];
+    
+    [self.view addSubview:view];
+}
+```
+
+![alt tag](https://raw.github.com/daltoniam/UICustomizeKit/images/radialProgressView.png)
+
+**ActivityView Example:**
+
+```objc
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    //ActivityView example
+    CGRect rect = { .origin.x = 20.0, .origin.y = 80.0, .size.width = 40, .size.height = 40 };
+    BaseActivityView *view = [[BaseActivityView alloc] initWithFrame:rect];
+    [self.view addSubview:view];
+    [view startAnimating];
+    
+    [self.view addSubview:view];
+}
+```
+
+![alt tag](https://raw.github.com/daltoniam/UICustomizeKit/images/activityView.png)
 
 # Requirements #
 

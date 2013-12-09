@@ -33,24 +33,9 @@
 {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    //draw the border
-    if(self.borderWidth > 0)
-    {
-        frame = CGRectInset(frame, 0.5, 0.5);
-        CGContextSaveGState(ctx);
-        CGContextSetStrokeColorWithColor(ctx, self.borderColor.CGColor);
-        CGContextSetLineWidth(ctx, self.borderWidth);
-        CGContextSetLineJoin(ctx, kCGLineJoinRound);
-        
-        CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame
-                                               byRoundingCorners:self.corners
-                                                     cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
-        CGContextAddPath(ctx, path);
-        
-        CGContextStrokePath(ctx);
-        CGContextRestoreGState(ctx);
-    }
     
+    if(self.borderWidth > 0)
+        frame = CGRectInset(frame, self.borderWidth, self.borderWidth);
     // draws background
     CGContextSaveGState(ctx);
     CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame
@@ -67,10 +52,11 @@
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)newGradientColors, newGradientLocations);
-    CGContextDrawLinearGradient(ctx, gradient, CGPointMake(self.borderWidth, 0), CGPointMake(self.borderWidth, frame.size.height), 0);
+    CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, 0), CGPointMake(0, frame.size.height+self.borderWidth), 0);
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
     CGContextRestoreGState(ctx);
+    
     
     //draw the fill
     CGContextSaveGState(ctx);
@@ -102,6 +88,25 @@
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
     CGContextRestoreGState(ctx);
+    
+    //draw the border
+    if(self.borderWidth > 0)
+    {
+        //frame = CGRectInset(frame, self.borderWidth, self.borderWidth);
+        CGContextSaveGState(ctx);
+        CGContextSetStrokeColorWithColor(ctx, self.borderColor.CGColor);
+        CGContextSetLineWidth(ctx, self.borderWidth);
+        CGContextSetLineJoin(ctx, kCGLineJoinRound);
+        
+        CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:frame
+                                               byRoundingCorners:self.corners
+                                                     cornerRadii:CGSizeMake(self.rounding, self.rounding)].CGPath;
+        CGContextAddPath(ctx, path);
+        
+        CGContextStrokePath(ctx);
+        CGContextRestoreGState(ctx);
+    }
+    
     if(self.animateProgress > -1 && (self.animateProgress+0.01 < self.progress || self.animateProgress-0.01 > self.progress) )
     {
         if(self.animateProgress < self.progress)

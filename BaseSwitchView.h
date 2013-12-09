@@ -38,6 +38,26 @@
 @property(nonatomic,strong)NSString* offText;
 
 /**
+ Property for the background color in the on state
+ */
+@property(nonatomic,strong)UIColor* onBackgroundColor;
+
+/**
+ Property for the text color in the on state
+ */
+@property(nonatomic,strong)UIColor* onColor;
+
+/**
+ Property for the background color in the off state
+ */
+@property(nonatomic,strong)UIColor* offBackgroundColor;
+
+/**
+ Property for the text color in the on state
+ */
+@property(nonatomic,strong)UIColor* offColor;
+
+/**
  See if the switch is in the "on" state.
  */
 @property(nonatomic,readonly,getter=isOn)BOOL on;

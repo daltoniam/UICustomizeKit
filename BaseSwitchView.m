@@ -100,13 +100,14 @@
     label.text = NSLocalizedString(@"ON",nil);
     label.font = [UIFont boldSystemFontOfSize:12];
     label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = self.onColor;
     return label;
 }
 //////////////////////////////////////////////////////////////////
 -(UIView*)onBackgroundViewSetup
 {
     UIView* view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor peterRiverColor];
+    view.backgroundColor = self.onBackgroundColor;
     return view;
 }
 //////////////////////////////////////////////////////////////////
@@ -117,6 +118,7 @@
     label.text = NSLocalizedString(@"OFF",nil);
     label.font = [UIFont boldSystemFontOfSize:12];
     label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = self.offColor;
     return label;
 }
 //////////////////////////////////////////////////////////////////
@@ -130,8 +132,40 @@
 -(UIView*)knobViewSetup
 {
     UIView* view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor whiteColor];
+    view.backgroundColor = self.backgroundColor;
     return view;
+}
+//////////////////////////////////////////////////////////////////
+-(void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    [super setBackgroundColor:backgroundColor];
+    knobView.backgroundColor = backgroundColor;
+}
+//////////////////////////////////////////////////////////////////
+-(void)setOnBackgroundColor:(UIColor *)onBackgroundColor
+{
+    _onBackgroundColor = onBackgroundColor;
+    onBackgroundView.backgroundColor = _onBackgroundColor;
+}
+//////////////////////////////////////////////////////////////////
+-(void)setOffBackgroundColor:(UIColor *)offBackgroundColor
+{
+    _offBackgroundColor = offBackgroundColor;
+    offBackgroundView.backgroundColor = offBackgroundColor;
+}
+//////////////////////////////////////////////////////////////////
+-(void)setOnColor:(UIColor *)onColor
+{
+    _onColor = onColor;
+    if([offView isKindOfClass:[UILabel class]])
+        [(UILabel*)offView setTextColor:onColor];
+}
+//////////////////////////////////////////////////////////////////
+-(void)setOffColor:(UIColor *)offColor
+{
+    _offColor = offColor;
+    if([onView isKindOfClass:[UILabel class]])
+        [(UILabel*)onView setTextColor:offColor];
 }
 //////////////////////////////////////////////////////////////////
 -(void)setOnText:(NSString *)text
