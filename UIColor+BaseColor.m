@@ -18,7 +18,7 @@
 //////////////////////////////////////////////////////////////////
 -(UIColor*)adjustColor:(CGFloat)point
 {
-    int totalComponents = CGColorGetNumberOfComponents(self.CGColor);
+    NSInteger totalComponents = CGColorGetNumberOfComponents(self.CGColor);
     BOOL isGreyscale = totalComponents == 2 ? YES : NO;
     
     CGFloat* oldComponents = (CGFloat*)CGColorGetComponents(self.CGColor);
