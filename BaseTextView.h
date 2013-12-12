@@ -14,9 +14,6 @@
  BaseTextView is a subclass of UITextView. It provides several different customizations to the default styling of UITextView. Properties annotated as Required have to be set.
  */
 @interface BaseTextView : UITextView
-{
-    UILabel* placeHolderLabel;
-}
 
 ///-------------------------------
 /// @name Style Customizations
@@ -81,6 +78,16 @@
  Add inner padding for the text field.
  */
 @property(nonatomic,assign)CGFloat padding;
+
+/**
+ Set the placeholder text.
+ */
+@property(nonatomic,copy)NSString *placeholder;
+
+/**
+ Set the placeholder color.
+ */
+@property(nonatomic,strong)UIColor *placeholderColor;
 
 ///-------------------------------
 /// @name Methods

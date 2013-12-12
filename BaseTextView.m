@@ -18,6 +18,8 @@
 
 @interface BaseTextView ()
 
+@property(nonatomic,strong)UILabel *placeHolderLabel;
+
 @property(nonatomic,strong)TextViewDelegate* myDelegate;
 
 @end
@@ -41,6 +43,8 @@
         //self.returnKeyType = UIReturnKeyDone;
         self.delegate = self.myDelegate;
         [self performSelector:@selector(firstSetup) withObject:nil afterDelay:0.01];
+        self.borderColor = [UIColor clearColor];
+        self.borderWidth = 0;
     }
     return self;
 }
@@ -61,8 +65,8 @@
 //////////////////////////////////////////////////////////////////
 -(void)updateFrame:(CGRect)frame
 {
-    //placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.padding, self.padding,
-    //                                                             self.frame.size.width-(self.padding*2), -(self.padding*2))];
+    if(self.placeholder.length > 0)
+        [self checkPlaceHolder];
 }
 //////////////////////////////////////////////////////////////////
 -(void)setPadding:(CGFloat)padding
@@ -71,19 +75,22 @@
     self.contentInset = UIEdgeInsetsMake(padding, padding, padding, padding);
 }
 //////////////////////////////////////////////////////////////////
-/*-(void)setPlaceholder:(NSString *)placeholder
+-(void)setPlaceholder:(NSString *)placeholder
 {
     _placeholder = placeholder;
-    if(!placeHolderLabel)
+    if(placeholder.length > 0)
     {
-        placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.padding, self.padding,
-                                                                     self.frame.size.width-(self.padding*2), -(self.padding*2))];
-        placeHolderLabel.backgroundColor = [UIColor clearColor];
-        //placeHolderLabel.textColor = [UIColor lightGrayColor];
-        placeHolderLabel.text = placeholder;
-        [self addSubview:placeHolderLabel];
+        [self checkPlaceHolder];
+        self.placeHolderLabel.text = _placeholder;
     }
-}*/
+}
+//////////////////////////////////////////////////////////////////
+-(void)setPlaceholderColor:(UIColor *)placeholderColor
+{
+    _placeholderColor = placeholderColor;
+    if(self.placeHolderLabel.text.length > 0)
+        [self checkPlaceHolder];
+}
 //////////////////////////////////////////////////////////////////
 - (void)setDelegate:(id<UITextViewDelegate>)delegate
 {
@@ -131,8 +138,33 @@
     self.layer.cornerRadius = self.rounding;
     self.layer.borderColor = border.CGColor;
     self.layer.borderWidth = self.borderWidth;
+    [self updatePlaceHolder:state];
     //self.background = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth cornerRadius:self.rounding];
     //self.disabledBackground = [UIImage imageWithBorder:border bodyColor:body width:self.borderWidth cornerRadius:self.rounding];
+}
+//////////////////////////////////////////////////////////////////
+-(void)updatePlaceHolder:(textState)textState
+{
+    if(textState == textStateNormal && self.text.length == 0)
+        self.placeHolderLabel.hidden = NO;
+    else
+        self.placeHolderLabel.hidden = YES;
+}
+//////////////////////////////////////////////////////////////////
+-(void)checkPlaceHolder
+{
+    if(!self.placeHolderLabel)
+    {
+        self.placeHolderLabel = [[UILabel alloc] init];
+        [self addSubview:self.placeHolderLabel];
+        self.placeHolderLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.placeHolderLabel.textColor = [UIColor lightGrayColor];
+    }
+    self.placeHolderLabel.font = self.font;
+    if(self.placeholderColor)
+        self.placeHolderLabel.textColor = self.placeholderColor;
+    self.placeHolderLabel.frame = CGRectMake(self.padding, self.padding,
+                                             self.frame.size.width-(self.padding*2), self.placeHolderLabel.font.pointSize+2);
 }
 //////////////////////////////////////////////////////////////////
 -(void)setEditable:(BOOL)editable

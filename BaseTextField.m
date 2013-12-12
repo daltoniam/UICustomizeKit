@@ -42,6 +42,8 @@
         self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         self.delegate = self.myDelegate;
         [self performSelector:@selector(firstSetup) withObject:nil afterDelay:0.01];
+        self.borderWidth = 0;
+        self.borderColor = [UIColor clearColor];
     }
     return self;
 }
@@ -116,7 +118,9 @@
         border = self.borderColor;
     
     self.textColor = txtColor;
-    float size = self.borderWidth+1;
+    float size = 0;
+    if(self.borderWidth > 0)
+        size = self.borderWidth+1;
     self.background = [[UIImage imageWithBorder:border bodyColor:body width:self.borderWidth*2 cornerRadius:self.rounding] resizableImageWithCapInsets:UIEdgeInsetsMake(size,size,size,size)];
     self.disabledBackground = [[UIImage imageWithBorder:border bodyColor:body width:self.borderWidth*2 cornerRadius:self.rounding] resizableImageWithCapInsets:UIEdgeInsetsMake(size,size,size,size)];
 }
