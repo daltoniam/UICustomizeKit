@@ -1,5 +1,7 @@
 # UICustomizeKit #
 
+[![Build Status](https://travis-ci.org/daltoniam/UICustomizeKit.png)](https://travis-ci.org/daltoniam/UICustomizeKit)
+
 The UICustomizeKit extends standard UIKit components to make amazing looking controls. I saw that there was a lot of good UI kits cropping up for iOS, but none of them had a full implementation of controls or where/are easy to customize outside of the theme's scope. The goal of UICustomizeKit is to allow you to customize all controls easily, to create a great style with minimal effort. A Flat and Bootstrap control kits are currently provided (and hopefully you will contribute and add more!). Those repos can be found here:
 
 https://github.com/daltoniam/FlatUIKit
@@ -35,7 +37,7 @@ Requires CoreGraphics framework, quartz framework.
     button.borderColor = [UIColor colorWithWhite:0.7 alpha:1];
     button.isBackButton = YES;
     button.corners = 5.0;
-    
+
     // a more modern button.
     CGRect rect2 = { .origin.x = 20.0, .origin.y = 110.0, .size.width = 132.0, .size.height = 44.0 };
     BaseButton *modernButton = [[BaseButton alloc] initWithFrame:rect2];
@@ -50,8 +52,8 @@ Requires CoreGraphics framework, quartz framework.
     colorLocs[0] = 0.0f;
     colorLocs[1] = 1.0f;
     modernButton.colorRange = range;
-    
-    
+
+
     [self.view addSubview:button];
     [self.view addSubview:modernButton];
 }
@@ -112,7 +114,7 @@ Requires CoreGraphics framework, quartz framework.
     slider.thumbRange = colorLocs;
     slider.thumbSelectedColors = @[[UIColor yellowColor]];
     slider.thumbSelectedRange = colorLocs;
-    
+
     [self.view addSubview:slider];
 
 }
@@ -177,7 +179,7 @@ Requires CoreGraphics framework, quartz framework.
     textView.mainTextColor = [UIColor redColor];
     textView.borderWidth = 1;
     textView.borderColor = [UIColor colorWithWhite:0.9 alpha:1];
-    
+
     [self.view addSubview:textView];
 }
 ```
@@ -196,7 +198,7 @@ Requires CoreGraphics framework, quartz framework.
     BaseRadialProgressView *view = [[BaseRadialProgressView alloc] initWithFrame:rect];
     view.borderColor = [UIColor greenColor];
     [view setProgress:0.8 animated:YES];
-    
+
     [self.view addSubview:view];
 }
 ```
@@ -215,7 +217,7 @@ Requires CoreGraphics framework, quartz framework.
     BaseActivityView *view = [[BaseActivityView alloc] initWithFrame:rect];
     [self.view addSubview:view];
     [view startAnimating];
-    
+
     [self.view addSubview:view];
 }
 ```
