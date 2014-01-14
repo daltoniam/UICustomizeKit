@@ -1,5 +1,5 @@
 language: objective-c
 before_install:
     - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
-xcode_project: UICustomizeKit.xcodeproj
+xcode_workspace: UICustomizeKit.xcworkspace
 xcode_scheme: UICustomizeKit
