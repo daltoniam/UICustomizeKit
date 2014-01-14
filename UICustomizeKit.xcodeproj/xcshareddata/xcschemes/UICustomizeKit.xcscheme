@@ -7,7 +7,7 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "YES"
+            buildForTesting = "NO"
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
@@ -17,6 +17,20 @@
                BlueprintIdentifier = "6BF1AEC518858F5600D7E31A"
                BuildableName = "UICustomizeKit.app"
                BlueprintName = "UICustomizeKit"
+               ReferencedContainer = "container:UICustomizeKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6BF1AEE018858F5600D7E31A"
+               BuildableName = "UICustomizeKitTests.xctest"
+               BlueprintName = "UICustomizeKitTests"
                ReferencedContainer = "container:UICustomizeKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

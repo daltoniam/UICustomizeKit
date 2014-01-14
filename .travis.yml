@@ -1,5 +1,4 @@
 language: objective-c
 before_install:
     - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
-xcode_workspace: UICustomizeKit.xcworkspace
-xcode_scheme: UICustomizeKit
+script: xctool -workspace UICustomizeKit.xcworkspace -scheme UICustomizeKit -sdk iphonesimulator -configuration Release test -test-sdk iphonesimulator

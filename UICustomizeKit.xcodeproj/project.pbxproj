@@ -11,22 +11,7 @@
 		6BF1AEE318858F5600D7E31A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF1AEE218858F5600D7E31A /* XCTest.framework */; };
 		6BF1AEE418858F5600D7E31A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF1AEC918858F5600D7E31A /* Foundation.framework */; };
 		6BF1AEE518858F5600D7E31A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF1AECD18858F5600D7E31A /* UIKit.framework */; };
-		6BF1AF151885908900D7E31A /* BaseActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AEF91885908900D7E31A /* BaseActivityView.m */; };
-		6BF1AF161885908900D7E31A /* BaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AEFB1885908900D7E31A /* BaseButton.m */; };
-		6BF1AF171885908900D7E31A /* BaseProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AEFD1885908900D7E31A /* BaseProgressView.m */; };
-		6BF1AF181885908900D7E31A /* BaseRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AEFF1885908900D7E31A /* BaseRadialProgressView.m */; };
-		6BF1AF191885908900D7E31A /* BaseSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF011885908900D7E31A /* BaseSlider.m */; };
-		6BF1AF1A1885908900D7E31A /* BaseSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF031885908900D7E31A /* BaseSwitchView.m */; };
-		6BF1AF1B1885908900D7E31A /* BaseTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF061885908900D7E31A /* BaseTextField.m */; };
-		6BF1AF1C1885908900D7E31A /* BaseTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF081885908900D7E31A /* BaseTextView.m */; };
-		6BF1AF1D1885908900D7E31A /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF0A1885908900D7E31A /* CircleView.m */; };
-		6BF1AF1E1885908900D7E31A /* RoundRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF0C1885908900D7E31A /* RoundRectView.m */; };
-		6BF1AF1F1885908900D7E31A /* UIBarButtonItem+BaseStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF0E1885908900D7E31A /* UIBarButtonItem+BaseStyle.m */; };
-		6BF1AF201885908900D7E31A /* UIColor+BaseColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF101885908900D7E31A /* UIColor+BaseColor.m */; };
-		6BF1AF211885908900D7E31A /* UIImage+BaseImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF121885908900D7E31A /* UIImage+BaseImage.m */; };
-		6BF1AF221885908900D7E31A /* UITabBar+ BaseStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF131885908900D7E31A /* UITabBar+ BaseStyle.m */; };
 		6BF1AF241885915500D7E31A /* BaseActivityViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1AF231885915500D7E31A /* BaseActivityViewTests.m */; };
-		6BF1AF26188591FA00D7E31A /* UICustomizeKitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BF1AF25188591FA00D7E31A /* UICustomizeKitTests-Info.plist */; };
 		6BF1AF291885941C00D7E31A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BF1AF271885941C00D7E31A /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
@@ -235,7 +220,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BF1AF26188591FA00D7E31A /* UICustomizeKitTests-Info.plist in Resources */,
 				6BF1AF291885941C00D7E31A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,21 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BF1AF201885908900D7E31A /* UIColor+BaseColor.m in Sources */,
-				6BF1AF221885908900D7E31A /* UITabBar+ BaseStyle.m in Sources */,
-				6BF1AF161885908900D7E31A /* BaseButton.m in Sources */,
-				6BF1AF211885908900D7E31A /* UIImage+BaseImage.m in Sources */,
-				6BF1AF191885908900D7E31A /* BaseSlider.m in Sources */,
 				6BF1AF241885915500D7E31A /* BaseActivityViewTests.m in Sources */,
-				6BF1AF1D1885908900D7E31A /* CircleView.m in Sources */,
-				6BF1AF151885908900D7E31A /* BaseActivityView.m in Sources */,
-				6BF1AF1B1885908900D7E31A /* BaseTextField.m in Sources */,
-				6BF1AF1C1885908900D7E31A /* BaseTextView.m in Sources */,
-				6BF1AF1A1885908900D7E31A /* BaseSwitchView.m in Sources */,
-				6BF1AF1F1885908900D7E31A /* UIBarButtonItem+BaseStyle.m in Sources */,
-				6BF1AF1E1885908900D7E31A /* RoundRectView.m in Sources */,
-				6BF1AF171885908900D7E31A /* BaseProgressView.m in Sources */,
-				6BF1AF181885908900D7E31A /* BaseRadialProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,12 +367,21 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UICustomizeKit/UICustomizeKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Tests/UICustomizeKit-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "UICustomizeKitTests/UICustomizeKitTests-Info.plist";
+				INFOPLIST_FILE = "Tests/UICustomizeKitTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					XCTest,
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -419,8 +398,17 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UICustomizeKit/UICustomizeKit-Prefix.pch";
-				INFOPLIST_FILE = "UICustomizeKitTests/UICustomizeKitTests-Info.plist";
+				GCC_PREFIX_HEADER = "Tests/UICustomizeKit-Prefix.pch";
+				INFOPLIST_FILE = "Tests/UICustomizeKitTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					XCTest,
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
