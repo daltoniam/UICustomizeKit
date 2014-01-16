@@ -163,8 +163,8 @@
     self.placeHolderLabel.font = self.font;
     if(self.placeholderColor)
         self.placeHolderLabel.textColor = self.placeholderColor;
-    self.placeHolderLabel.frame = CGRectMake(self.padding, self.padding,
-                                             self.frame.size.width-(self.padding*2), self.placeHolderLabel.font.pointSize+2);
+    self.placeHolderLabel.frame = CGRectMake(self.padding+self.placeholderPadding.width, self.padding+self.placeholderPadding.height,
+                                             self.frame.size.width-(self.padding*2+self.placeholderPadding.width), self.placeHolderLabel.font.pointSize+2);
 }
 //////////////////////////////////////////////////////////////////
 -(void)setEditable:(BOOL)editable

@@ -89,6 +89,11 @@
  */
 @property(nonatomic,strong)UIColor *placeholderColor;
 
+/**
+ Set the placeholder color.
+ */
+@property(nonatomic,assign)CGSize placeholderPadding;
+
 ///-------------------------------
 /// @name Methods
 ///-------------------------------
