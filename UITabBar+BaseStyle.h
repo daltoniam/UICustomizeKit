@@ -18,12 +18,13 @@
 /// @name Category Methods.
 ///-------------------------------
 
+// will remove, ios 7 deprecated.
 /**
  Set the image color and selected color.
  @param Set image color.
  @param Set the selected image color.
  */
--(void)setImageColor:(UIColor*)color selected:(UIColor*)selectedColor UI_APPEARANCE_SELECTOR;
+//-(void)setImageColor:(UIColor*)color selected:(UIColor*)selectedColor UI_APPEARANCE_SELECTOR;
 
 /**
  Set the text color and selected color.

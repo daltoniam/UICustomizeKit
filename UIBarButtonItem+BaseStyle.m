@@ -35,7 +35,7 @@
 +(void)processFont:(id)appearance font:(UIFont*)font
 {
     NSMutableDictionary *titleTextAttributes = [UIBarButtonItem titleTextAttribs:appearance forState:UIControlStateNormal];
-    [titleTextAttributes setObject:font forKey:UITextAttributeFont];
+    [titleTextAttributes setObject:font forKey:NSFontAttributeName];
     [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateHighlighted];
     [appearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateDisabled];

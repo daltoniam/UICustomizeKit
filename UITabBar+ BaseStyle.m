@@ -14,7 +14,7 @@
 @implementation UITabBar (BaseStyle)
 
 //////////////////////////////////////////////////////////////////
--(void)setImageColor:(UIColor*)color selected:(UIColor*)selectedColor
+/*-(void)setImageColor:(UIColor*)color selected:(UIColor*)selectedColor
 {
     for(UITabBarItem* item in self.items)
     {
@@ -23,7 +23,7 @@
         [item setFinishedSelectedImage:img withFinishedUnselectedImage:selImg];
     }
     //[self performSelector:@selector(test) withObject:nil afterDelay:0.01];
-}
+}*/
 //////////////////////////////////////////////////////////////////
 /*-(void)test
 {
@@ -38,11 +38,11 @@
     for(UITabBarItem* item in self.items)
     {
         NSMutableDictionary* attribs = [UITabBar titleTextAttribs:item forState:UIControlStateNormal];
-        [attribs setValue:color forKey:UITextAttributeTextColor];
+        [attribs setValue:color forKey:NSForegroundColorAttributeName];
         [item setTitleTextAttributes:attribs forState:UIControlStateNormal];
         
         attribs = [UITabBar titleTextAttribs:item forState:UIControlStateHighlighted];
-        [attribs setValue:selectedColor forKey:UITextAttributeTextColor];
+        [attribs setValue:selectedColor forKey:NSForegroundColorAttributeName];
         [item setTitleTextAttributes:attribs forState:UIControlStateHighlighted];
     }
 }
@@ -52,11 +52,11 @@
     for(UITabBarItem* item in self.items)
     {
         NSMutableDictionary* attribs = [UITabBar titleTextAttribs:item forState:UIControlStateNormal];
-        [attribs setValue:font forKey:UITextAttributeFont];
+        [attribs setValue:font forKey:NSFontAttributeName];
         [item setTitleTextAttributes:attribs forState:UIControlStateNormal];
         
         attribs = [UITabBar titleTextAttribs:item forState:UIControlStateHighlighted];
-        [attribs setValue:font forKey:UITextAttributeFont];
+        [attribs setValue:font forKey:NSFontAttributeName];
         [item setTitleTextAttributes:attribs forState:UIControlStateHighlighted];
     }
 }
@@ -65,11 +65,11 @@
 {
     id appearance = [UITabBarItem appearance];
     NSMutableDictionary* attribs = [UITabBar titleTextAttribs:appearance forState:UIControlStateNormal];
-    [attribs setValue:color forKey:UITextAttributeTextColor];
+    [attribs setValue:color forKey:NSForegroundColorAttributeName];
     [appearance setTitleTextAttributes:attribs forState:UIControlStateNormal];
     
     attribs = [UITabBar titleTextAttribs:appearance forState:UIControlStateHighlighted];
-    [attribs setValue:selectedColor forKey:UITextAttributeTextColor];
+    [attribs setValue:selectedColor forKey:NSForegroundColorAttributeName];
     [appearance setTitleTextAttributes:attribs forState:UIControlStateHighlighted];
 }
 //////////////////////////////////////////////////////////////////
@@ -77,11 +77,11 @@
 {
     id appearance = [UITabBarItem appearance];
     NSMutableDictionary* attribs = [UITabBar titleTextAttribs:appearance forState:UIControlStateNormal];
-    [attribs setValue:font forKey:UITextAttributeFont];
+    [attribs setValue:font forKey:NSFontAttributeName];
     [appearance setTitleTextAttributes:attribs forState:UIControlStateNormal];
     
     attribs = [UITabBar titleTextAttribs:appearance forState:UIControlStateHighlighted];
-    [attribs setValue:font forKey:UITextAttributeFont];
+    [attribs setValue:font forKey:NSFontAttributeName];
     [appearance setTitleTextAttributes:attribs forState:UIControlStateHighlighted];
 }
 //////////////////////////////////////////////////////////////////

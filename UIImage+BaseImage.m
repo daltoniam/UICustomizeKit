@@ -39,6 +39,16 @@
 //////////////////////////////////////////////////////////////////
 -(UIImage*)cropImage:(CGRect)rect
 {
+    //I might add/modify to do this....
+    /*CGSize size = [self size];
+    CGFloat wscale = size.width/rect.size.width;
+    CGFloat width = rect.size.width*wscale;
+    
+    CGFloat hscale = size.height/rect.size.height;
+    CGFloat height = rect.size.height*hscale;
+    
+    CGRect cropRect = CGRectMake(rect.origin.y*wscale, rect.origin.x*wscale,
+                                 width, height);*/
     
     CGRect cropRect = CGRectMake(rect.origin.x*self.scale, rect.origin.y*self.scale, rect.size.width*self.scale, rect.size.height*self.scale);
     
