@@ -46,7 +46,7 @@
  @param CGRect of area to crop image.
  @return Returns a UIImage representation of that view within the rect bounds.
  */
-//-(UIImage*)capture:(CGRect)rect;
+-(UIImage*)capture:(CGRect)rect;
 
 
 /**
@@ -60,7 +60,7 @@
  Blur the view's background. This replace the view's background color. 
  The view MUST have a frame and a superview before calling this.
  */
--(void)blurView;
+//-(void)blurView;
 
 @end
 
