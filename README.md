@@ -10,7 +10,7 @@ https://github.com/daltoniam/BootstrapUIKit
 
 # Dependencies #
 
-Requires CoreGraphics framework, quartz framework.
+Requires CoreGraphics framework, quartz framework, and Accelerate framework (for blur effects).
 
 # Examples #
 
@@ -226,7 +226,7 @@ Requires CoreGraphics framework, quartz framework.
 
 # Requirements #
 
-This framework requires at least iOS 5 above.
+This framework requires at least iOS 6 above.
 
 # License #
 

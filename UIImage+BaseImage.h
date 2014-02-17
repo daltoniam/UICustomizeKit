@@ -12,6 +12,23 @@
 /**
  Provides category methods for UIView.
  */
+@interface UIWindow (BaseImage)
+
+///-------------------------------
+/// @name Category Methods.
+///-------------------------------
+
+/**
+ Create an image from the whole window.
+ @return Returns a UIImage representation of that window.
+ */
++(UIImage*)capture;
+
+@end
+
+/**
+ Provides category methods for UIView.
+ */
 @interface UIView (BaseImage)
 
 ///-------------------------------
@@ -25,11 +42,25 @@
 -(UIImage*)capture;
 
 /**
- Create an image from the shape.
+ Create an image from the shape. (Still working on...)
  @param CGRect of area to crop image.
  @return Returns a UIImage representation of that view within the rect bounds.
  */
--(UIImage*)capture:(CGRect)rect;
+//-(UIImage*)capture:(CGRect)rect;
+
+
+/**
+ Create an image from the shape. (Still working on...)
+ @param CGRect of area to crop image.
+ @return Returns a blur version of the UIImage representation of that view within the rect bounds.
+ */
+//-(UIImage*)captureBlur:(CGRect)rect;
+
+/**
+ Blur the view's background. This replace the view's background color. 
+ The view MUST have a frame and a superview before calling this.
+ */
+-(void)blurView;
 
 @end
 

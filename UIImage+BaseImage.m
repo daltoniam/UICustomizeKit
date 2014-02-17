@@ -11,6 +11,25 @@
 #import "CircleView.h"
 #import "RoundRectView.h"
 #import <QuartzCore/QuartzCore.h>
+//#import "UIImage+ImageEffects.h"
+
+//////////////////////////////////////////////////////////////////
+@implementation UIWindow (BaseImage)
+
++(UIImage*)capture
+{
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    UIGraphicsBeginImageContextWithOptions(window.bounds.size, NO, 0.0); //self.opaque
+    [window.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
+
+@end
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 @implementation UIView (BaseImage)
 
@@ -29,6 +48,27 @@
     UIImage* img = [self capture];
     return [img cropImage:rect];
 }
+//////////////////////////////////////////////////////////////////
+/*-(UIImage*)captureBlur:(CGRect)rect
+{
+    CGFloat scale = 0.5;
+    if ([[UIDevice currentDevice].systemVersion floatValue] < 7.0f && [UIScreen mainScreen].scale == 1.0f)
+        scale = 1;
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextTranslateCTM(context, -rect.origin.x, -rect.origin.y);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
+//////////////////////////////////////////////////////////////////
+-(void)blurView
+{
+    CGRect frame = [self convertRect:self.bounds toView:self.superview];
+    UIImage* img = [[self.superview captureBlur:frame] applyLightEffect];
+    self.backgroundColor = [UIColor colorWithPatternImage:img];
+}*/
 //////////////////////////////////////////////////////////////////
 
 @end
